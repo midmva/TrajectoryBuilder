@@ -18,3 +18,7 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
+
+CONFIG += qwt
+
+include ( /usr/local/qwt-6.1.2/features/qwt.prf )
