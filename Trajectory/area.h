@@ -19,6 +19,7 @@ class Area : public QWidget
 public:
     explicit Area(QWidget *parent = 0);
     ~Area();
+    QLabel *number;
 
 private:
     Ui::Area *ui;

@@ -19,8 +19,9 @@ Area::Area(QWidget *parent) :
     QHBoxLayout *horLay = new QHBoxLayout();
     horLay->setSpacing(5);
     horLay->setContentsMargins(5,5,5,5);
-    QLabel *number = new QLabel();
-    number->setStyleSheet(QString("QLabel{border:1px solid gray; border-radius:5px;background: %1}").arg(backgroundColor));
+    number = new QLabel();
+    number->setAlignment(Qt::AlignCenter);
+    number->setStyleSheet(QString("QLabel{font-weight:bold; border:1px solid gray; border-radius:5px;background: %1}").arg(backgroundColor));
     number->setContentsMargins(0,0,0,0);
     horLay->addWidget(number,1);
 

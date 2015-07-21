@@ -39,7 +39,6 @@ void MainWindow::ShowChange(){
 }
 
 void MainWindow::ChangeManeur(int index){
-    qDebug()<<index;
     if (index == 7){
         trajLayer->insertWidget(trajLayer->indexOf(change),addButton);
         trajLayer->removeWidget(change);
