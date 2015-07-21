@@ -6,6 +6,7 @@
 #include <QVBoxLayout>
 #include "QtSvgButton"
 #include "change.h"
+#include "area.h"
 
 namespace Ui {
 class MainWindow;
@@ -24,9 +25,12 @@ private:
     QVBoxLayout *trajLayer;
     QtSvgButton *addButton;
     Change *change;
+    QString *pathToRes;
+
 
 private slots:
     void ShowChange();
+    void ChangeManeur(int index);
 };
 
 #endif // MAINWINDOW_H

@@ -14,13 +14,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    change.cpp
+    change.cpp \
+    area.cpp
 
 HEADERS  += mainwindow.h \
-    change.h
+    change.h \
+    area.h
 
 FORMS    += mainwindow.ui \
-    change.ui
+    change.ui \
+    area.ui
 
 CONFIG += qwt
 
