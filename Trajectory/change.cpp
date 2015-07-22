@@ -14,7 +14,7 @@ Change::Change(QWidget *parent) :
     QLabel *label = new QLabel();
     label->setFixedSize(this->size());
     label->setContentsMargins(0,0,0,0);
-    label->setStyleSheet("QLabel{border:4px solid gray; border-radius:10px}");
+    label->setStyleSheet("QLabel{border:4px solid #00aa00; border-radius:10px}");
     generalLay->addWidget(label);
     QHBoxLayout *lay = new QHBoxLayout();
     label->setLayout(lay);

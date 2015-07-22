@@ -7,6 +7,34 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     pathToRes = new QString("/home/midv/Projects/TrajectoryBuilder/Trajectory/resourses/");
+    nameSkin = new QStringList();
+    nameSkin->append("Line");
+    nameSkin->append("Aссel");
+    nameSkin->append("ArcV");
+    nameSkin->append("ArcH");
+    nameSkin->append("ZmeyV");
+    nameSkin->append("ZmeyH");
+    nameArea = new QStringList();
+    nameArea->append("Прямолинейное\nравномерное\nдвижение");
+    nameArea->append("Прямолинейное\nравноускоренное\nдвижение");
+    nameArea->append("Движение по дуге\nв вертикальной\nплоскости");
+    nameArea->append("Движение по дуге\nв горизонтальной\nплоскости");
+    nameArea->append("Маневр \"змейка\"\nв вертикальной\nплоскости");
+    nameArea->append("Маневр \"змейка\"\nв горизонтальной\nплоскости");
+    nameParameter = new QStringList();
+    nameParameter->append("Расстояние,\n[м]");
+    nameParameter->append("Ограничение\nпо длительности\nманевра,\n[с]");
+    nameParameter->append("Ускорение,\n[м/с^2]");
+    nameParameter->append("Скорость\nв конце маневра,\n[м/с]");
+    nameParameter->append("Центробежное\nускорение,\n[м/с^2]");
+    nameParameter->append("Угол поворота,\n[град]");
+    nameParameter->append("Центробежное\nускорение,\n[м/с^2]");
+    nameParameter->append("Угол поворота,\n[град]");
+    nameParameter->append("Максимальная\nперегрузка,\n[м/с^2]");
+    nameParameter->append("Смещение цели\nв вертикальной\nплоскости,\n[м]");
+    nameParameter->append("Максимальная\nперегрузка,\n[м/с^2]");
+    nameParameter->append("Смещение цели\nв горизонтальной\nплоскости,\n[м]");
+
     ui->setupUi(this);
     change = new Change();
     connect(change,SIGNAL(pressButton(int)),SLOT(ChangeManeur(int)));
@@ -47,6 +75,7 @@ void MainWindow::ChangeManeur(int index){
     }
     else {
         Area *area = new Area(this);
+        area->InitArea(trajLayer->indexOf(change)+1,nameSkin->at(index-1),nameArea->at(index-1),nameParameter->at((index-1)*2),0,nameParameter->at((index-1)*2+1),0);
         trajLayer->insertWidget(trajLayer->indexOf(change),area);
         trajLayer->removeWidget(change);
         change->hide();

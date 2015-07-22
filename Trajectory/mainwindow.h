@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QStringList>
 #include "QtSvgButton"
 #include "change.h"
 #include "area.h"
@@ -26,6 +27,9 @@ private:
     QtSvgButton *addButton;
     Change *change;
     QString *pathToRes;
+    QStringList *nameSkin;
+    QStringList *nameArea;
+    QStringList *nameParameter;
 
 
 private slots:
