@@ -8,6 +8,7 @@
 #include <QSpinBox>
 #include "QtSvgButton"
 #include <QTimer>
+#include "change.h"
 
 
 namespace Ui {
@@ -27,10 +28,12 @@ public:
                   const QString name,
                   const QString parameter1, const int value1,
                   const QString parameter2, const int value2);
+    void SetNumber(int number);
 
 private:
     Ui::Area *ui;
     QString *pathToRes;
+    QHBoxLayout *generalLay;
     QLabel *label;
     QString backgroundColor;
     QtSvgButton *areaButton;
@@ -40,9 +43,17 @@ private:
     QLabel *parameterLabel2;
     QSpinBox *parameterValue1;
     QSpinBox *parameterValue2;
+    Change *change;
+
+    void InitLabel();
 
 private slots:
     void timeOut();
+    void PressButton();
+    void changeSlot(int index);
+
+signals:
+    void Renumber(Area *ptr);
 };
 
 #endif // AREA_H

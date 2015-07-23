@@ -27,14 +27,19 @@ private:
     QtSvgButton *addButton;
     Change *change;
     QString *pathToRes;
-    QStringList *nameSkin;
-    QStringList *nameArea;
-    QStringList *nameParameter;
+    QList<Area *> *list;
+
 
 
 private slots:
     void ShowChange();
     void ChangeManeur(int index);
+    void Renumber(Area * ptr);
 };
+
+extern QStringList *nameSkin;
+extern QStringList *nameArea;
+extern QStringList *nameParameter;
+
 
 #endif // MAINWINDOW_H

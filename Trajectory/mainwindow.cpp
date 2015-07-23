@@ -2,10 +2,15 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 
+QStringList *nameSkin = NULL;
+QStringList *nameArea = NULL;
+QStringList *nameParameter = NULL;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    list = new QList<Area *>();
     pathToRes = new QString("/home/midv/Projects/TrajectoryBuilder/Trajectory/resourses/");
     nameSkin = new QStringList();
     nameSkin->append("Line");
@@ -51,7 +56,6 @@ MainWindow::MainWindow(QWidget *parent) :
     addButton->setLockalSkin(*pathToRes,"Add");
     addButton->setFixedSize(150,150);
     trajLayer->addWidget(addButton);
-
 }
 
 MainWindow::~MainWindow()
@@ -74,12 +78,29 @@ void MainWindow::ChangeManeur(int index){
         change->hide();
     }
     else {
-        Area *area = new Area(this);
+        Area *area = new Area();
+        list->append(area);
+        connect(area,SIGNAL(Renumber(Area*)),this,SLOT(Renumber(Area*)));
         area->InitArea(trajLayer->indexOf(change)+1,nameSkin->at(index-1),nameArea->at(index-1),nameParameter->at((index-1)*2),0,nameParameter->at((index-1)*2+1),0);
         trajLayer->insertWidget(trajLayer->indexOf(change),area);
         trajLayer->removeWidget(change);
         change->hide();
+        if (list->count()<4){
+            trajLayer->addWidget(addButton);
+            addButton->show();
+        }
+    }
+}
+
+void MainWindow::Renumber(Area *ptr){
+    if (list->count()==4){
         trajLayer->addWidget(addButton);
         addButton->show();
+    }
+    list->removeOne(ptr);
+    trajLayer->removeWidget(ptr);
+    ptr->deleteLater();
+    for (int i = 0; i<list->count();i++){
+        list->at(i)->SetNumber(i+1);
     }
 }

@@ -1,6 +1,7 @@
 #include "area.h"
 #include "ui_area.h"
 #include <QDebug>
+#include "mainwindow.h"
 
 Area::Area(QWidget *parent) :
     QWidget(parent),
@@ -9,7 +10,7 @@ Area::Area(QWidget *parent) :
     pathToRes = new QString("/home/midv/Projects/TrajectoryBuilder/Trajectory/resourses/");
     ui->setupUi(this);
     backgroundColor = palette().background().color().name();
-    QHBoxLayout *generalLay = new QHBoxLayout(this);
+    generalLay = new QHBoxLayout(this);
     generalLay->setContentsMargins(0,0,0,0);
     label = new QLabel();
     label->setFixedSize(this->size());
@@ -37,6 +38,7 @@ Area::Area(QWidget *parent) :
     areaButton = new QtSvgButton();
     areaButton->setLockalSkin(*pathToRes,"ZmeyH");
     areaButton->setFixedSize(150,150);
+    connect(areaButton,SIGNAL(clicked()),SLOT(PressButton()));
     horLay1->addWidget(areaButton,0);
     areaLabel = new QLabel("Area Label");
     areaLabel->setContentsMargins(0,0,0,0);
@@ -86,6 +88,10 @@ Area::Area(QWidget *parent) :
     timer->start(40);
 }
 
+void Area::InitLabel(){
+
+}
+
 Area::~Area()
 {
     delete ui;
@@ -105,6 +111,19 @@ void Area::InitArea(const int number,
     parameterValue2->setValue(value2);
 }
 
+void Area::changeSlot(int index){
+    if (index == 7) {
+        emit Renumber(this);
+    }
+    else{
+        generalLay->removeWidget(change);
+        generalLay->addWidget(label);
+        InitArea(number->text().toInt(),nameSkin->at(index-1),nameArea->at(index-1),nameParameter->at((index-1)*2),0,nameParameter->at((index-1)*2+1),0);
+        change->hide();
+        label->show();
+    }
+}
+
 void Area::timeOut(){
     if (parameterValue1->hasFocus()||parameterValue2->hasFocus()){
         label->setStyleSheet("QLabel{border:1px solid gray; border-radius:5px;background:red}");
@@ -115,4 +134,15 @@ void Area::timeOut(){
     else {
         label->setStyleSheet(QString("QLabel{border:1px solid gray; border-radius:5px;background: %1}").arg(backgroundColor));
     }
+}
+
+void Area::PressButton(){
+    change = new Change();
+    connect(change,SIGNAL(pressButton(int)),SLOT(changeSlot(int)));
+    generalLay->replaceWidget(label,change);
+    label->hide();
+}
+
+void Area::SetNumber(int number){
+    this->number->setText(QString::number(number));
 }

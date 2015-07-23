@@ -3,6 +3,7 @@
 #include <QHBoxLayout>
 #include "QtSvgButton"
 
+
 Change::Change(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Change)
