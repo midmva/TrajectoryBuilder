@@ -26,7 +26,11 @@ public:
 private:
     Ui::MainWindow *ui;
     QHBoxLayout *horLay;
-    QList<Trajectory *> *list;
+    Trajectory * trajectory[4];
+    int show_trajectory;
+
+private slots:
+    void changeTrajectory(int number);
 
 };
 

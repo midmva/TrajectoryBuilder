@@ -548,9 +548,7 @@ qrc_berylsquare_svgbutton.cpp: /opt/embedded-widgets-1.1.0/skins/berylsquare_svg
 	/opt/Qt5.4.1/5.4/gcc/bin/rcc -name berylsquare_svgbutton /opt/embedded-widgets-1.1.0/skins/berylsquare_svgbutton.qrc -o qrc_berylsquare_svgbutton.cpp
 
 qrc_resourses.cpp: ../Trajectory/resourses.qrc \
-		../Trajectory/resourses/ZmeyV/pressed.svg \
-		../Trajectory/resourses/ZmeyV/hovered.svg \
-		../Trajectory/resourses/ZmeyV/normal.svg
+		../Trajectory/resourses/icon.svg
 	/opt/Qt5.4.1/5.4/gcc/bin/rcc -name resourses ../Trajectory/resourses.qrc -o qrc_resourses.cpp
 
 compiler_moc_header_make_all: moc_mainwindow.cpp moc_change.cpp moc_area.cpp moc_trajectory.cpp moc_controlpanel.cpp moc_qtsvgbutton.cpp
@@ -2239,7 +2237,49 @@ controlpanel.o: ../Trajectory/controlpanel.cpp ../Trajectory/controlpanel.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qicon.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/QPicture \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpicture.h \
-		ui_controlpanel.h
+		ui_controlpanel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QVariant \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QAction \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qaction.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qactiongroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QApplication \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qapplication.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcoreapplication.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeventloop.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdesktopwidget.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qguiapplication.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qinputmethod.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QButtonGroup \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QHeaderView \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qheaderview.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qstyleoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qvalidator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qregularexpression.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qslider.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractslider.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qstyle.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qtabbar.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qtabwidget.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qrubberband.h \
+		../Trajectory/mainwindow.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QMainWindow \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qmainwindow.h \
+		../Trajectory/change.h \
+		../Trajectory/area.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QGridLayout \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QSpinBox \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qspinbox.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QTimer \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasictimer.h \
+		../Trajectory/trajectory.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controlpanel.o ../Trajectory/controlpanel.cpp
 
 qtsvgbutton.o: /opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.cpp /opt/Qt5.4.1/5.4/gcc/include/QtSvg/QSvgRenderer \

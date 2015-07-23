@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Trajectory Maker</string>
+   <string>Конструктор траекторий</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resourses.qrc">
+    <normaloff>:/resourses/icon.svg</normaloff>:/resourses/icon.svg</iconset>
   </property>
   <property name="iconSize">
    <size>
@@ -22,6 +26,8 @@
   <widget class="QWidget" name="centralWidget"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resourses.qrc"/>
+ </resources>
  <connections/>
 </ui>

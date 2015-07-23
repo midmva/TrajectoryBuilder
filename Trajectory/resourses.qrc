@@ -1,7 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>resourses/ZmeyV/hovered.svg</file>
-        <file>resourses/ZmeyV/normal.svg</file>
-        <file>resourses/ZmeyV/pressed.svg</file>
+        <file>resourses/icon.svg</file>
     </qresource>
 </RCC>

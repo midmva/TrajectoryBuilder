@@ -23,7 +23,22 @@ public:
 private:
     Ui::ControlPanel *ui;
     QVBoxLayout *verLay;
+    QString style_gray;
+    QString style_green;
+    QString style_no_border;
+    QLabel *trajectory_area_1;
+    QLabel *trajectory_area_2;
+    QLabel *trajectory_area_3;
+    QLabel *trajectory_area_4;
 
+private slots:
+    void pressButton1();
+    void pressButton2();
+    void pressButton3();
+    void pressButton4();
+
+signals:
+    void changeTrajectory(int number);
 };
 
 #endif // CONTROLPANEL_H

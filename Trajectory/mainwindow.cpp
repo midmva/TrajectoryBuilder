@@ -11,7 +11,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    list = new QList<Trajectory *>();
     nameSkin = new QStringList();
     nameSkin->append("Line");
     nameSkin->append("Aссel");
@@ -44,15 +43,27 @@ MainWindow::MainWindow(QWidget *parent) :
     horLay = new QHBoxLayout(ui->centralWidget);
     horLay->setSpacing(0);
     horLay->setAlignment(Qt::AlignCenter);
-    Trajectory * trajectory = new Trajectory();
-    list->append(trajectory);
-    horLay->addWidget(trajectory);
+    trajectory[0] = new Trajectory();
+    trajectory[1] = new Trajectory();
+    trajectory[2] = new Trajectory();
+    trajectory[3] = new Trajectory();
+    horLay->addWidget(trajectory[0]);
+    show_trajectory = 0;
     ControlPanel *control = new ControlPanel();
+    connect(control,SIGNAL(changeTrajectory(int)),SLOT(changeTrajectory(int)));
     horLay->addWidget(control);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::changeTrajectory(int number){
+    horLay->removeWidget(trajectory[show_trajectory]);
+    trajectory[show_trajectory]->hide();
+    show_trajectory = number-1;
+    horLay->insertWidget(0,trajectory[show_trajectory]);
+    trajectory[show_trajectory]->show();
 }
 

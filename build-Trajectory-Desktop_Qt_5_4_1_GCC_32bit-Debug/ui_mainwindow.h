@@ -29,6 +29,9 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(1100, 600);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/resourses/icon.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        MainWindow->setWindowIcon(icon);
         MainWindow->setIconSize(QSize(24, 24));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
@@ -41,7 +44,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Trajectory Maker", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "\320\232\320\276\320\275\321\201\321\202\321\200\321\203\320\272\321\202\320\276\321\200 \321\202\321\200\320\260\320\265\320\272\321\202\320\276\321\200\320\270\320\271", 0));
     } // retranslateUi
 
 };
