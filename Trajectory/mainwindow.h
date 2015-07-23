@@ -8,6 +8,8 @@
 #include "QtSvgButton"
 #include "change.h"
 #include "area.h"
+#include "trajectory.h"
+#include "controlpanel.h"
 
 namespace Ui {
 class MainWindow;
@@ -23,23 +25,15 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QVBoxLayout *trajLayer;
-    QtSvgButton *addButton;
-    Change *change;
-    QString *pathToRes;
-    QList<Area *> *list;
+    QHBoxLayout *horLay;
+    QList<Trajectory *> *list;
 
-
-
-private slots:
-    void ShowChange();
-    void ChangeManeur(int index);
-    void Renumber(Area * ptr);
 };
 
 extern QStringList *nameSkin;
 extern QStringList *nameArea;
 extern QStringList *nameParameter;
+extern     QString *pathToRes;
 
 
 #endif // MAINWINDOW_H

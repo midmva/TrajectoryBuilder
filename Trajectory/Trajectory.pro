@@ -15,15 +15,21 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     change.cpp \
-    area.cpp
+    area.cpp \
+    trajectory.cpp \
+    controlpanel.cpp
 
 HEADERS  += mainwindow.h \
     change.h \
-    area.h
+    area.h \
+    trajectory.h \
+    controlpanel.h
 
 FORMS    += mainwindow.ui \
     change.ui \
-    area.ui
+    area.ui \
+    trajectory.ui \
+    controlpanel.ui
 
 CONFIG += qwt
 
