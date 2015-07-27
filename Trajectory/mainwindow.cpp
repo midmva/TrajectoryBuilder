@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    mode = false;
     nameSkin = new QStringList();
     nameSkin->append("Line");
     nameSkin->append("Aссel");
@@ -43,14 +44,15 @@ MainWindow::MainWindow(QWidget *parent) :
     horLay = new QHBoxLayout(ui->centralWidget);
     horLay->setSpacing(0);
     horLay->setAlignment(Qt::AlignCenter);
-    trajectory[0] = new Trajectory();
-    trajectory[1] = new Trajectory();
-    trajectory[2] = new Trajectory();
-    trajectory[3] = new Trajectory();
+    for (int i = 0; i<4; i++){
+        trajectory[i] = new Trajectory();
+        graf[i] = new GrafTrajectory();
+    }
     horLay->addWidget(trajectory[0]);
     show_trajectory = 0;
     ControlPanel *control = new ControlPanel();
     connect(control,SIGNAL(changeTrajectory(int)),SLOT(changeTrajectory(int)));
+    connect(control,SIGNAL(changeMode(bool)),SLOT(changeMode(bool)));
     horLay->addWidget(control);
 }
 
@@ -60,10 +62,36 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::changeTrajectory(int number){
-    horLay->removeWidget(trajectory[show_trajectory]);
-    trajectory[show_trajectory]->hide();
-    show_trajectory = number-1;
-    horLay->insertWidget(0,trajectory[show_trajectory]);
-    trajectory[show_trajectory]->show();
+    if (!mode){
+        horLay->removeWidget(graf[show_trajectory]);
+        graf[show_trajectory]->hide();
+        show_trajectory = number-1;
+        horLay->insertWidget(0,graf[show_trajectory]);
+        graf[show_trajectory]->show();
+    }
+    else{
+        horLay->removeWidget(trajectory[show_trajectory]);
+        trajectory[show_trajectory]->hide();
+        show_trajectory = number-1;
+        horLay->insertWidget(0,trajectory[show_trajectory]);
+        trajectory[show_trajectory]->show();
+    }
+}
+
+void MainWindow::changeMode(bool mode){
+    this->mode = mode;
+    if (!this->mode){
+        horLay->removeWidget(trajectory[show_trajectory]);
+        trajectory[show_trajectory]->hide();
+        horLay->insertWidget(0,graf[show_trajectory]);
+        graf[show_trajectory]->show();
+    }
+    else {
+        horLay->removeWidget(graf[show_trajectory]);
+        graf[show_trajectory]->hide();
+        horLay->insertWidget(0,trajectory[show_trajectory]);
+        trajectory[show_trajectory]->show();
+    }
+
 }
 

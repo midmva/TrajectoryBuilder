@@ -30,15 +30,19 @@ private:
     QLabel *trajectory_area_2;
     QLabel *trajectory_area_3;
     QLabel *trajectory_area_4;
+    QLabel *label;
+    QtSvgButton *show_graf_button;
 
 private slots:
     void pressButton1();
     void pressButton2();
     void pressButton3();
     void pressButton4();
+    void pressButtonGraf();
 
 signals:
-    void changeTrajectory(int number);
+    void changeTrajectory(const int number);
+    void changeMode(const bool mode);
 };
 
 #endif // CONTROLPANEL_H

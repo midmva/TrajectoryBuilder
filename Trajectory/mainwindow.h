@@ -10,6 +10,7 @@
 #include "area.h"
 #include "trajectory.h"
 #include "controlpanel.h"
+#include "graftrajectory.h"
 
 namespace Ui {
 class MainWindow;
@@ -27,10 +28,13 @@ private:
     Ui::MainWindow *ui;
     QHBoxLayout *horLay;
     Trajectory * trajectory[4];
+    GrafTrajectory *graf[4];
     int show_trajectory;
+    bool mode;
 
 private slots:
     void changeTrajectory(int number);
+    void changeMode(bool mode);
 
 };
 

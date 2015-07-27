@@ -17,19 +17,22 @@ SOURCES += main.cpp\
     change.cpp \
     area.cpp \
     trajectory.cpp \
-    controlpanel.cpp
+    controlpanel.cpp \
+    graftrajectory.cpp
 
 HEADERS  += mainwindow.h \
     change.h \
     area.h \
     trajectory.h \
-    controlpanel.h
+    controlpanel.h \
+    graftrajectory.h
 
 FORMS    += mainwindow.ui \
     change.ui \
     area.ui \
     trajectory.ui \
-    controlpanel.ui
+    controlpanel.ui \
+    graftrajectory.ui
 
 CONFIG += qwt
 

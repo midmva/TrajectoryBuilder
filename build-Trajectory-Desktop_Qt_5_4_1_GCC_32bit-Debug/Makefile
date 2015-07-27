@@ -54,6 +54,7 @@ SOURCES       = ../Trajectory/main.cpp \
 		../Trajectory/area.cpp \
 		../Trajectory/trajectory.cpp \
 		../Trajectory/controlpanel.cpp \
+		../Trajectory/graftrajectory.cpp \
 		/opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.cpp qrc_berylsquare_svgbutton.cpp \
 		qrc_resourses.cpp \
 		moc_mainwindow.cpp \
@@ -61,6 +62,7 @@ SOURCES       = ../Trajectory/main.cpp \
 		moc_area.cpp \
 		moc_trajectory.cpp \
 		moc_controlpanel.cpp \
+		moc_graftrajectory.cpp \
 		moc_qtsvgbutton.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
@@ -68,6 +70,7 @@ OBJECTS       = main.o \
 		area.o \
 		trajectory.o \
 		controlpanel.o \
+		graftrajectory.o \
 		qtsvgbutton.o \
 		qrc_berylsquare_svgbutton.o \
 		qrc_resourses.o \
@@ -76,6 +79,7 @@ OBJECTS       = main.o \
 		moc_area.o \
 		moc_trajectory.o \
 		moc_controlpanel.o \
+		moc_graftrajectory.o \
 		moc_qtsvgbutton.o
 DIST          = /opt/Qt5.4.1/5.4/gcc/mkspecs/features/spec_pre.prf \
 		/opt/Qt5.4.1/5.4/gcc/mkspecs/common/shell-unix.conf \
@@ -197,12 +201,14 @@ DIST          = /opt/Qt5.4.1/5.4/gcc/mkspecs/features/spec_pre.prf \
 		../Trajectory/area.h \
 		../Trajectory/trajectory.h \
 		../Trajectory/controlpanel.h \
+		../Trajectory/graftrajectory.h \
 		/opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.h ../Trajectory/main.cpp \
 		../Trajectory/mainwindow.cpp \
 		../Trajectory/change.cpp \
 		../Trajectory/area.cpp \
 		../Trajectory/trajectory.cpp \
 		../Trajectory/controlpanel.cpp \
+		../Trajectory/graftrajectory.cpp \
 		/opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.cpp
 QMAKE_TARGET  = Trajectory
 DESTDIR       = #avoid trailing-slash linebreak
@@ -231,7 +237,7 @@ first: all
 
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_change.h ui_area.h ui_trajectory.h ui_controlpanel.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_change.h ui_area.h ui_trajectory.h ui_controlpanel.h ui_graftrajectory.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../Trajectory/Trajectory.pro /opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++/qmake.conf /opt/Qt5.4.1/5.4/gcc/mkspecs/features/spec_pre.prf \
@@ -494,9 +500,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/embedded-widgets-1.1.0/skins/berylsquare_svgbutton.qrc ../Trajectory/resourses.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../Trajectory/mainwindow.h ../Trajectory/change.h ../Trajectory/area.h ../Trajectory/trajectory.h ../Trajectory/controlpanel.h /opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Trajectory/main.cpp ../Trajectory/mainwindow.cpp ../Trajectory/change.cpp ../Trajectory/area.cpp ../Trajectory/trajectory.cpp ../Trajectory/controlpanel.cpp /opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Trajectory/mainwindow.ui ../Trajectory/change.ui ../Trajectory/area.ui ../Trajectory/trajectory.ui ../Trajectory/controlpanel.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Trajectory/mainwindow.h ../Trajectory/change.h ../Trajectory/area.h ../Trajectory/trajectory.h ../Trajectory/controlpanel.h ../Trajectory/graftrajectory.h /opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Trajectory/main.cpp ../Trajectory/mainwindow.cpp ../Trajectory/change.cpp ../Trajectory/area.cpp ../Trajectory/trajectory.cpp ../Trajectory/controlpanel.cpp ../Trajectory/graftrajectory.cpp /opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Trajectory/mainwindow.ui ../Trajectory/change.ui ../Trajectory/area.ui ../Trajectory/trajectory.ui ../Trajectory/controlpanel.ui ../Trajectory/graftrajectory.ui $(DISTDIR)/
 
 
 clean:compiler_clean 
@@ -551,9 +557,9 @@ qrc_resourses.cpp: ../Trajectory/resourses.qrc \
 		../Trajectory/resourses/icon.svg
 	/opt/Qt5.4.1/5.4/gcc/bin/rcc -name resourses ../Trajectory/resourses.qrc -o qrc_resourses.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_change.cpp moc_area.cpp moc_trajectory.cpp moc_controlpanel.cpp moc_qtsvgbutton.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_change.cpp moc_area.cpp moc_trajectory.cpp moc_controlpanel.cpp moc_graftrajectory.cpp moc_qtsvgbutton.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_change.cpp moc_area.cpp moc_trajectory.cpp moc_controlpanel.cpp moc_qtsvgbutton.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_change.cpp moc_area.cpp moc_trajectory.cpp moc_controlpanel.cpp moc_graftrajectory.cpp moc_qtsvgbutton.cpp
 moc_mainwindow.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QMainWindow \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qmainwindow.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qwidget.h \
@@ -1185,6 +1191,111 @@ moc_controlpanel.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QWidget \
 		../Trajectory/controlpanel.h
 	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/controlpanel.h -o moc_controlpanel.cpp
 
+moc_graftrajectory.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QWidget \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qwidget.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qwindowdefs.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qglobal.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qconfig.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfeatures.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsystemdetection.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qprocessordetection.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcompilerdetection.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtypeinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtypetraits.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsysinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlogging.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qflags.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasicatomic.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qgenericatomic.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_msvc.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_armv7.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_armv6.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_armv5.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_ia64.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_mips.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_x86.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_gcc.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_unix.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qglobalstatic.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmutex.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qnumeric.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobjectdefs.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qnamespace.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobjectdefs_impl.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qwindowdefs_win.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobject.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstring.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qchar.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbytearray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qrefcount.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qarraydata.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstringbuilder.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlist.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qalgorithms.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qiterator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbytearraylist.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcoreevent.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qscopedpointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmetatype.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qvarlengtharray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcontainerfwd.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qisenum.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobject_impl.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmargins.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpaintdevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qrect.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsize.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpoint.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpalette.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qcolor.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qrgb.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstringlist.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdatastream.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qiodevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpair.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qregexp.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstringmatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qbrush.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qvector.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qmatrix.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpolygon.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qregion.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qline.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtransform.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpainterpath.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qimage.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpixelformat.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpixmap.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsharedpointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qshareddata.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qhash.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsharedpointer_impl.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qfont.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qfontmetrics.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qfontinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qsizepolicy.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qcursor.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qkeysequence.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qevent.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qvariant.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmap.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdebug.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtextstream.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlocale.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qset.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcontiguouscache.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qurl.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qurlquery.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfiledevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qvector2d.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtouchdevice.h \
+		../Trajectory/graftrajectory.h
+	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/graftrajectory.h -o moc_graftrajectory.cpp
+
 moc_qtsvgbutton.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QAbstractButton \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractbutton.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qicon.h \
@@ -1296,9 +1407,9 @@ moc_qtsvgbutton.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QAbstractButton \
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_change.h ui_area.h ui_trajectory.h ui_controlpanel.h
+compiler_uic_make_all: ui_mainwindow.h ui_change.h ui_area.h ui_trajectory.h ui_controlpanel.h ui_graftrajectory.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_change.h ui_area.h ui_trajectory.h ui_controlpanel.h
+	-$(DEL_FILE) ui_mainwindow.h ui_change.h ui_area.h ui_trajectory.h ui_controlpanel.h ui_graftrajectory.h
 ui_mainwindow.h: ../Trajectory/mainwindow.ui
 	/opt/Qt5.4.1/5.4/gcc/bin/uic ../Trajectory/mainwindow.ui -o ui_mainwindow.h
 
@@ -1313,6 +1424,126 @@ ui_trajectory.h: ../Trajectory/trajectory.ui
 
 ui_controlpanel.h: ../Trajectory/controlpanel.ui
 	/opt/Qt5.4.1/5.4/gcc/bin/uic ../Trajectory/controlpanel.ui -o ui_controlpanel.h
+
+ui_graftrajectory.h: ../Trajectory/graftrajectory.ui \
+		/usr/local/qwt-6.1.2/include/qwt_plot.h \
+		/usr/local/qwt-6.1.2/include/qwt_global.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qglobal.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qconfig.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfeatures.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsystemdetection.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qprocessordetection.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcompilerdetection.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtypeinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtypetraits.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsysinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlogging.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qflags.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasicatomic.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qgenericatomic.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_msvc.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_armv7.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_armv6.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_armv5.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_ia64.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_mips.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_x86.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_gcc.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_unix.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qglobalstatic.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmutex.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qnumeric.h \
+		/usr/local/qwt-6.1.2/include/qwt_text.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstring.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qchar.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbytearray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qrefcount.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qnamespace.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qarraydata.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstringbuilder.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsize.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qfont.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qwindowdefs.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobjectdefs.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobjectdefs_impl.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qwindowdefs_win.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsharedpointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qshareddata.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qhash.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qiterator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlist.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qalgorithms.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbytearraylist.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpair.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsharedpointer_impl.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobject.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcoreevent.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qscopedpointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmetatype.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qvarlengtharray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcontainerfwd.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qisenum.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobject_impl.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_dict.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_item.h \
+		/usr/local/qwt-6.1.2/include/qwt_legend_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_graphic.h \
+		/usr/local/qwt-6.1.2/include/qwt_null_paintdevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpaintdevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qrect.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmargins.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpoint.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpaintengine.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpainter.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpixmap.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qcolor.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qrgb.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstringlist.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdatastream.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qiodevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qregexp.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstringmatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qimage.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtransform.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qmatrix.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpolygon.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qvector.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qregion.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qline.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpainterpath.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpixelformat.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtextoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpen.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qbrush.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qfontinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qfontmetrics.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qvariant.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmap.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdebug.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtextstream.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlocale.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qset.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcontiguouscache.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_map.h \
+		/usr/local/qwt-6.1.2/include/qwt_transform.h \
+		/usr/local/qwt-6.1.2/include/qwt_interval.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qframe.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qwidget.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpalette.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qsizepolicy.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qcursor.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qkeysequence.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qevent.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qurl.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qurlquery.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfiledevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qvector2d.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtouchdevice.h
+	/opt/Qt5.4.1/5.4/gcc/bin/uic ../Trajectory/graftrajectory.ui -o ui_graftrajectory.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -2282,6 +2513,112 @@ controlpanel.o: ../Trajectory/controlpanel.cpp ../Trajectory/controlpanel.h \
 		../Trajectory/trajectory.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controlpanel.o ../Trajectory/controlpanel.cpp
 
+graftrajectory.o: ../Trajectory/graftrajectory.cpp ../Trajectory/graftrajectory.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QWidget \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qwidget.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qwindowdefs.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qglobal.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qconfig.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfeatures.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsystemdetection.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qprocessordetection.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcompilerdetection.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtypeinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtypetraits.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsysinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlogging.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qflags.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasicatomic.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qgenericatomic.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_msvc.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_armv7.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_armv6.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_armv5.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_ia64.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_mips.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_x86.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_gcc.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qatomic_unix.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qglobalstatic.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmutex.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qnumeric.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobjectdefs.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qnamespace.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobjectdefs_impl.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qwindowdefs_win.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobject.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstring.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qchar.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbytearray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qrefcount.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qarraydata.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstringbuilder.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlist.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qalgorithms.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qiterator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbytearraylist.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcoreevent.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qscopedpointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmetatype.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qvarlengtharray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcontainerfwd.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qisenum.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobject_impl.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmargins.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpaintdevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qrect.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsize.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpoint.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpalette.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qcolor.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qrgb.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstringlist.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdatastream.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qiodevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpair.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qregexp.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstringmatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qbrush.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qvector.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qmatrix.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpolygon.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qregion.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qline.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtransform.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpainterpath.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qimage.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpixelformat.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpixmap.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsharedpointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qshareddata.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qhash.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsharedpointer_impl.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qfont.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qfontmetrics.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qfontinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qsizepolicy.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qcursor.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qkeysequence.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qevent.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qvariant.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmap.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdebug.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtextstream.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlocale.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qset.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcontiguouscache.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qurl.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qurlquery.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfiledevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qvector2d.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtouchdevice.h \
+		ui_graftrajectory.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graftrajectory.o ../Trajectory/graftrajectory.cpp
+
 qtsvgbutton.o: /opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.cpp /opt/Qt5.4.1/5.4/gcc/include/QtSvg/QSvgRenderer \
 		/opt/Qt5.4.1/5.4/gcc/include/QtSvg/qsvgrenderer.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qmatrix.h \
@@ -2419,6 +2756,9 @@ moc_trajectory.o: moc_trajectory.cpp
 
 moc_controlpanel.o: moc_controlpanel.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_controlpanel.o moc_controlpanel.cpp
+
+moc_graftrajectory.o: moc_graftrajectory.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_graftrajectory.o moc_graftrajectory.cpp
 
 moc_qtsvgbutton.o: moc_qtsvgbutton.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_qtsvgbutton.o moc_qtsvgbutton.cpp

@@ -44,7 +44,6 @@ ControlPanel::ControlPanel(QWidget *parent) :
     QLabel *trajectory_label_2 = new QLabel("Траектория 2");
     trajectory_label_2->setAlignment(Qt::AlignCenter);
     trajectory_label_2->setStyleSheet(style_no_border);
-    //trajectory_label->setFixedHeight(48);
     layHor2->addWidget(trajectory_label_2);
     QtSvgButton *trajectory_button_2 = new QtSvgButton();
     connect(trajectory_button_2,SIGNAL(clicked()),SLOT(pressButton2()));
@@ -61,7 +60,6 @@ ControlPanel::ControlPanel(QWidget *parent) :
     QLabel *trajectory_label_3 = new QLabel("Траектория 3");
     trajectory_label_3->setAlignment(Qt::AlignCenter);
     trajectory_label_3->setStyleSheet(style_no_border);
-    //trajectory_label->setFixedHeight(48);
     layHor3->addWidget(trajectory_label_3);
     QtSvgButton *trajectory_button_3 = new QtSvgButton();
     connect(trajectory_button_3,SIGNAL(clicked()),SLOT(pressButton3()));
@@ -88,6 +86,37 @@ ControlPanel::ControlPanel(QWidget *parent) :
     layVer->addWidget(trajectory_area_4);
 
     verLay->addWidget(trajectory_area);
+
+    verLay->addStretch(1);
+
+    QLabel *graf_area = new QLabel();
+    graf_area->setStyleSheet(style_gray);
+    graf_area->setFixedHeight(60);
+    graf_area->setContentsMargins(3,3,3,3);
+    QHBoxLayout *lay1 = new QHBoxLayout();
+    graf_area->setLayout(lay1);
+    lay1->setContentsMargins(0,0,0,0);
+    QLabel *button_area = new QLabel();
+    button_area->setStyleSheet(style_gray);
+    button_area->setContentsMargins(1,1,1,1);
+    lay1->addWidget(button_area);
+    QHBoxLayout *lay2 = new QHBoxLayout();
+    lay2->setContentsMargins(0,0,0,0);
+    button_area->setLayout(lay2);
+    label = new QLabel("Просмотр\nтраектории");
+    label->setStyleSheet(style_no_border);
+    label->setAlignment(Qt::AlignCenter);
+    lay2->addWidget(label);
+
+    show_graf_button = new QtSvgButton();
+    show_graf_button->setLockalSkin(*pathToRes, "Graf");
+    connect(show_graf_button,SIGNAL(clicked()),SLOT(pressButtonGraf()));
+    show_graf_button->setFixedSize(50,50);
+    lay2->addWidget(show_graf_button);
+    verLay->addWidget(graf_area);
+
+
+
     verLay->addStretch(1);
     QLabel *control_area = new QLabel();
     control_area->setStyleSheet(style_gray);
@@ -130,4 +159,18 @@ void ControlPanel::pressButton4(){
     trajectory_area_3->setStyleSheet(style_gray);
     trajectory_area_4->setStyleSheet(style_green);
     emit changeTrajectory(4);
+}
+
+void ControlPanel::pressButtonGraf(){
+    static bool mode = false;
+    if (!mode) {
+        show_graf_button->setLockalSkin(*pathToRes,"Constructor");
+        label->setText("Режим\nконструктора");
+    }
+    else {
+        show_graf_button->setLockalSkin(*pathToRes,"Graf");
+        label->setText("Просмотр\nтраектории");
+    }
+    emit changeMode(mode);
+    mode = !mode;
 }
