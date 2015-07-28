@@ -52,6 +52,8 @@ MainWindow::MainWindow(QWidget *parent) :
     show_trajectory = 0;
     ControlPanel *control = new ControlPanel();
     connect(control,SIGNAL(changeTrajectory(int)),SLOT(changeTrajectory(int)));
+    connect(control,SIGNAL(loadFileFrom(QString)),SLOT(loadFile(QString)));
+    connect(control,SIGNAL(saveFileAs(QString)),SLOT(saveFile(QString)));
     connect(control,SIGNAL(changeMode(bool)),SLOT(changeMode(bool)));
     horLay->addWidget(control);
 }
@@ -92,6 +94,12 @@ void MainWindow::changeMode(bool mode){
         horLay->insertWidget(0,trajectory[show_trajectory]);
         trajectory[show_trajectory]->show();
     }
-
 }
 
+void MainWindow::loadFile(const QString name){
+    qDebug()<<"load "+name;
+}
+
+void MainWindow::saveFile(const QString name){
+    qDebug()<<"save "+name;
+}

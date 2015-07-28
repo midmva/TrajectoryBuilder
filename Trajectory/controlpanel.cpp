@@ -115,13 +115,25 @@ ControlPanel::ControlPanel(QWidget *parent) :
     lay2->addWidget(show_graf_button);
     verLay->addWidget(graf_area);
 
-
-
     verLay->addStretch(1);
     QLabel *control_area = new QLabel();
     control_area->setStyleSheet(style_gray);
-    control_area->setFixedHeight(100);
+    control_area->setFixedHeight(140);
+    control_area->setContentsMargins(15,10,5,10);
     verLay->addWidget(control_area,1);
+    QVBoxLayout *ver_lay = new QVBoxLayout();
+    ver_lay->setAlignment(Qt::AlignCenter);
+    ver_lay->setContentsMargins(0,0,0,0);
+    ver_lay->setSpacing(10);
+    control_area->setLayout(ver_lay);
+    QtSvgButton *save_button = new QtSvgButton();
+    save_button->setLockalSkin(*pathToRes, "BerylSave");
+    connect(save_button,SIGNAL(clicked()),SLOT(pressButtonSave()));
+    ver_lay->addWidget(save_button);
+    QtSvgButton *load_button = new QtSvgButton();
+    load_button->setLockalSkin(*pathToRes,"BerylLoad");
+    connect(load_button,SIGNAL(clicked()),SLOT(pressButtonLoad()));
+    ver_lay->addWidget(load_button);
 }
 
 ControlPanel::~ControlPanel()
@@ -173,4 +185,12 @@ void ControlPanel::pressButtonGraf(){
     }
     emit changeMode(mode);
     mode = !mode;
+}
+
+void ControlPanel::pressButtonSave(){
+    emit saveFileAs(QFileDialog::getSaveFileName(0,"Сохранить траекторию как...", "","*.xml"));
+}
+
+void ControlPanel::pressButtonLoad(){
+    emit loadFileFrom(QFileDialog::getOpenFileName(0,"Открыть файл траектории","","*.xml"));
 }

@@ -33,8 +33,11 @@ private:
     bool mode;
 
 private slots:
-    void changeTrajectory(int number);
-    void changeMode(bool mode);
+    void changeTrajectory(const int number);
+    void changeMode(const bool mode);
+    void loadFile(const QString name);
+    void saveFile(const QString name);
+
 
 };
 

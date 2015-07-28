@@ -15,7 +15,7 @@ Trajectory::Trajectory(QWidget *parent) :
     trajLayer = new QVBoxLayout();
     trajLayer->setContentsMargins(0,0,0,0);
     trajLayer->setSpacing(10);
-    trajLayer->setAlignment(Qt::AlignTop);
+    trajLayer->setAlignment(Qt::AlignTop|Qt::AlignLeft);
     generalLayer->addLayout(trajLayer,3);
     QVBoxLayout *buttonLayout = new QVBoxLayout();
     generalLayer->addLayout(buttonLayout,1);

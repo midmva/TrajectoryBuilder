@@ -25,7 +25,6 @@ GrafTrajectory::GrafTrajectory(QWidget *parent) :
     QwtPlotGrid *plot_grid_4 = new QwtPlotGrid();
     initPlotGrid(plot_grid_4);
     plot_grid_4->attach( ui->qwtPlot_4 );
-    //plot_grid_1->attach( ui->qwtPlot_2 );
     grid->addWidget(ui->qwtPlot_1,0,0,1,1);
     grid->addWidget(ui->qwtPlot_2,0,1,1,1);
     grid->addWidget(ui->qwtPlot_3,1,0,1,1);

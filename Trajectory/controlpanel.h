@@ -6,6 +6,7 @@
 #include <QVBoxLayout>
 #include <QStringList>
 #include <QLabel>
+#include <QFileDialog>
 #include "QtSvgButton"
 
 namespace Ui {
@@ -39,10 +40,14 @@ private slots:
     void pressButton3();
     void pressButton4();
     void pressButtonGraf();
+    void pressButtonSave();
+    void pressButtonLoad();
 
 signals:
     void changeTrajectory(const int number);
     void changeMode(const bool mode);
+    void saveFileAs(const QString name);
+    void loadFileFrom(const QString name);
 };
 
 #endif // CONTROLPANEL_H
