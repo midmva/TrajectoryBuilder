@@ -16,6 +16,7 @@ public:
     explicit Change(QWidget *parent = 0);
     ~Change();
 
+
 private:
     Ui::Change *ui;
     QString *pathToRes;

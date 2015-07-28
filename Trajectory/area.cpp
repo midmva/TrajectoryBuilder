@@ -146,3 +146,20 @@ void Area::PressButton(){
 void Area::SetNumber(int number){
     this->number->setText(QString::number(number));
 }
+
+QStringList Area::getArea(){
+    QStringList list;
+    QString temp = areaLabel->text();
+    temp.replace("\n"," ");
+    list.append(number->text());
+    list.append(temp);
+    temp = parameterLabel1->text();
+    temp.replace("\n"," ");
+    list.append(temp);
+    list.append(QString::number(parameterValue1->value()));
+    temp = parameterLabel2->text();
+    temp.replace("\n"," ");
+    list.append(temp);
+    list.append(QString::number(parameterValue2->value()));
+    return list;
+}

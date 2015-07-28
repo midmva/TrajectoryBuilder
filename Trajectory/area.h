@@ -29,7 +29,7 @@ public:
                   const QString parameter1, const int value1,
                   const QString parameter2, const int value2);
     void SetNumber(int number);
-
+    QStringList getArea();
 private:
     Ui::Area *ui;
     QString *pathToRes;

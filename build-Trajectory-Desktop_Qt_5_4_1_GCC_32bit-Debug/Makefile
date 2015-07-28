@@ -55,8 +55,7 @@ SOURCES       = ../Trajectory/main.cpp \
 		../Trajectory/trajectory.cpp \
 		../Trajectory/controlpanel.cpp \
 		../Trajectory/graftrajectory.cpp \
-		/opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.cpp qrc_berylsquare_svgbutton.cpp \
-		qrc_resourses.cpp \
+		/opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.cpp qrc_resourses.cpp \
 		moc_mainwindow.cpp \
 		moc_change.cpp \
 		moc_area.cpp \
@@ -72,7 +71,6 @@ OBJECTS       = main.o \
 		controlpanel.o \
 		graftrajectory.o \
 		qtsvgbutton.o \
-		qrc_berylsquare_svgbutton.o \
 		qrc_resourses.o \
 		moc_mainwindow.o \
 		moc_change.o \
@@ -356,7 +354,6 @@ Makefile: ../Trajectory/Trajectory.pro /opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++/qm
 		/opt/Qt5.4.1/5.4/gcc/mkspecs/features/yacc.prf \
 		/opt/Qt5.4.1/5.4/gcc/mkspecs/features/lex.prf \
 		../Trajectory/Trajectory.pro \
-		/opt/embedded-widgets-1.1.0/skins/berylsquare_svgbutton.qrc \
 		../Trajectory/resourses.qrc \
 		/opt/Qt5.4.1/5.4/gcc/lib/libQt5Svg.prl \
 		/opt/Qt5.4.1/5.4/gcc/lib/libQt5Widgets.prl \
@@ -479,7 +476,6 @@ Makefile: ../Trajectory/Trajectory.pro /opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++/qm
 /opt/Qt5.4.1/5.4/gcc/mkspecs/features/yacc.prf:
 /opt/Qt5.4.1/5.4/gcc/mkspecs/features/lex.prf:
 ../Trajectory/Trajectory.pro:
-/opt/embedded-widgets-1.1.0/skins/berylsquare_svgbutton.qrc:
 ../Trajectory/resourses.qrc:
 /opt/Qt5.4.1/5.4/gcc/lib/libQt5Svg.prl:
 /opt/Qt5.4.1/5.4/gcc/lib/libQt5Widgets.prl:
@@ -499,7 +495,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents /opt/embedded-widgets-1.1.0/skins/berylsquare_svgbutton.qrc ../Trajectory/resourses.qrc $(DISTDIR)/
+	$(COPY_FILE) --parents ../Trajectory/resourses.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../Trajectory/mainwindow.h ../Trajectory/change.h ../Trajectory/area.h ../Trajectory/trajectory.h ../Trajectory/controlpanel.h ../Trajectory/graftrajectory.h /opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../Trajectory/main.cpp ../Trajectory/mainwindow.cpp ../Trajectory/change.cpp ../Trajectory/area.cpp ../Trajectory/trajectory.cpp ../Trajectory/controlpanel.cpp ../Trajectory/graftrajectory.cpp /opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Trajectory/mainwindow.ui ../Trajectory/change.ui ../Trajectory/area.ui ../Trajectory/trajectory.ui ../Trajectory/controlpanel.ui ../Trajectory/graftrajectory.ui $(DISTDIR)/
@@ -523,36 +519,9 @@ mocables: compiler_moc_header_make_all compiler_moc_source_make_all
 
 check: first
 
-compiler_rcc_make_all: qrc_berylsquare_svgbutton.cpp qrc_resourses.cpp
+compiler_rcc_make_all: qrc_resourses.cpp
 compiler_rcc_clean:
-	-$(DEL_FILE) qrc_berylsquare_svgbutton.cpp qrc_resourses.cpp
-qrc_berylsquare_svgbutton.cpp: /opt/embedded-widgets-1.1.0/skins/berylsquare_svgbutton.qrc \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylRedRect/pressed.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylRedRect/hovered.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylRedRect/normal.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylGreenRect/pressed.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylGreenRect/hovered.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylGreenRect/normal.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylBlueRect/pressed.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylBlueRect/hovered.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylBlueRect/normal.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylRect/pressed.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylRect/hovered.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylRect/normal.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylRedYellowRect/pressed.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylRedYellowRect/hovered.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylRedYellowRect/normal.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylYellowGreenRect/pressed.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylYellowGreenRect/hovered.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylYellowGreenRect/normal.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylSquare/pressed.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylSquare/hovered.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylSquare/normal.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylBlueGreenRect/pressed.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylBlueGreenRect/hovered.svg \
-		/opt/embedded-widgets-1.1.0/skins/svgbutton/BerylBlueGreenRect/normal.svg
-	/opt/Qt5.4.1/5.4/gcc/bin/rcc -name berylsquare_svgbutton /opt/embedded-widgets-1.1.0/skins/berylsquare_svgbutton.qrc -o qrc_berylsquare_svgbutton.cpp
-
+	-$(DEL_FILE) qrc_resourses.cpp
 qrc_resourses.cpp: ../Trajectory/resourses.qrc \
 		../Trajectory/resourses/icon.svg
 	/opt/Qt5.4.1/5.4/gcc/bin/rcc -name resourses ../Trajectory/resourses.qrc -o qrc_resourses.cpp
@@ -695,6 +664,44 @@ moc_mainwindow.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QMainWindow \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasictimer.h \
 		../Trajectory/trajectory.h \
 		../Trajectory/controlpanel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QFileDialog \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qfiledialog.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
+		../Trajectory/graftrajectory.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_grid.h \
+		/usr/local/qwt-6.1.2/include/qwt_global.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_item.h \
+		/usr/local/qwt-6.1.2/include/qwt_text.h \
+		/usr/local/qwt-6.1.2/include/qwt_legend_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_graphic.h \
+		/usr/local/qwt-6.1.2/include/qwt_null_paintdevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpaintengine.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpainter.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtextoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpen.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_div.h \
+		/usr/local/qwt-6.1.2/include/qwt_interval.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_layout.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_dict.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_map.h \
+		/usr/local/qwt-6.1.2/include/qwt_transform.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_canvas.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_marker.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_curve.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_seriesitem.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_samples.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_3d.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_polar.h \
+		/usr/local/qwt-6.1.2/include/qwt_math.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_store.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_directpainter.h \
+		/usr/local/qwt-6.1.2/include/qwt_curve_fitter.h \
+		/usr/local/qwt-6.1.2/include/qwt_painter.h \
 		../Trajectory/mainwindow.h
 	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/mainwindow.h -o moc_mainwindow.cpp
 
@@ -1181,6 +1188,11 @@ moc_controlpanel.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QWidget \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QLabel \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qlabel.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qframe.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QFileDialog \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qfiledialog.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
 		/opt/embedded-widgets-1.1.0/src/svgbutton/QtSvgButton \
 		/opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QAbstractButton \
@@ -1293,6 +1305,44 @@ moc_graftrajectory.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QWidget \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfiledevice.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qvector2d.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtouchdevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QGridLayout \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qgridlayout.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qlayout.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qboxlayout.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_grid.h \
+		/usr/local/qwt-6.1.2/include/qwt_global.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_item.h \
+		/usr/local/qwt-6.1.2/include/qwt_text.h \
+		/usr/local/qwt-6.1.2/include/qwt_legend_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_graphic.h \
+		/usr/local/qwt-6.1.2/include/qwt_null_paintdevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpaintengine.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpainter.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtextoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpen.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_div.h \
+		/usr/local/qwt-6.1.2/include/qwt_interval.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_layout.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_dict.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_map.h \
+		/usr/local/qwt-6.1.2/include/qwt_transform.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qframe.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_canvas.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_marker.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_curve.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_seriesitem.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_samples.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_3d.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_polar.h \
+		/usr/local/qwt-6.1.2/include/qwt_math.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_store.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_directpainter.h \
+		/usr/local/qwt-6.1.2/include/qwt_curve_fitter.h \
+		/usr/local/qwt-6.1.2/include/qwt_painter.h \
 		../Trajectory/graftrajectory.h
 	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/graftrajectory.h -o moc_graftrajectory.cpp
 
@@ -1691,6 +1741,44 @@ main.o: ../Trajectory/main.cpp ../Trajectory/mainwindow.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasictimer.h \
 		../Trajectory/trajectory.h \
 		../Trajectory/controlpanel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QFileDialog \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qfiledialog.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
+		../Trajectory/graftrajectory.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_grid.h \
+		/usr/local/qwt-6.1.2/include/qwt_global.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_item.h \
+		/usr/local/qwt-6.1.2/include/qwt_text.h \
+		/usr/local/qwt-6.1.2/include/qwt_legend_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_graphic.h \
+		/usr/local/qwt-6.1.2/include/qwt_null_paintdevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpaintengine.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpainter.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtextoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpen.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_div.h \
+		/usr/local/qwt-6.1.2/include/qwt_interval.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_layout.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_dict.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_map.h \
+		/usr/local/qwt-6.1.2/include/qwt_transform.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_canvas.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_marker.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_curve.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_seriesitem.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_samples.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_3d.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_polar.h \
+		/usr/local/qwt-6.1.2/include/qwt_math.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_store.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_directpainter.h \
+		/usr/local/qwt-6.1.2/include/qwt_curve_fitter.h \
+		/usr/local/qwt-6.1.2/include/qwt_painter.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QApplication \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qapplication.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcoreapplication.h \
@@ -1836,6 +1924,44 @@ mainwindow.o: ../Trajectory/mainwindow.cpp ../Trajectory/mainwindow.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasictimer.h \
 		../Trajectory/trajectory.h \
 		../Trajectory/controlpanel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QFileDialog \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qfiledialog.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
+		../Trajectory/graftrajectory.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_grid.h \
+		/usr/local/qwt-6.1.2/include/qwt_global.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_item.h \
+		/usr/local/qwt-6.1.2/include/qwt_text.h \
+		/usr/local/qwt-6.1.2/include/qwt_legend_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_graphic.h \
+		/usr/local/qwt-6.1.2/include/qwt_null_paintdevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpaintengine.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpainter.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtextoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpen.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_div.h \
+		/usr/local/qwt-6.1.2/include/qwt_interval.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_layout.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_dict.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_map.h \
+		/usr/local/qwt-6.1.2/include/qwt_transform.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_canvas.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_marker.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_curve.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_seriesitem.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_samples.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_3d.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_polar.h \
+		/usr/local/qwt-6.1.2/include/qwt_math.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_store.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_directpainter.h \
+		/usr/local/qwt-6.1.2/include/qwt_curve_fitter.h \
+		/usr/local/qwt-6.1.2/include/qwt_painter.h \
 		ui_mainwindow.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QVariant \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QAction \
@@ -2180,7 +2306,45 @@ area.o: ../Trajectory/area.cpp ../Trajectory/area.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QVBoxLayout \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QStringList \
 		../Trajectory/trajectory.h \
-		../Trajectory/controlpanel.h
+		../Trajectory/controlpanel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QFileDialog \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qfiledialog.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
+		../Trajectory/graftrajectory.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_grid.h \
+		/usr/local/qwt-6.1.2/include/qwt_global.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_item.h \
+		/usr/local/qwt-6.1.2/include/qwt_text.h \
+		/usr/local/qwt-6.1.2/include/qwt_legend_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_graphic.h \
+		/usr/local/qwt-6.1.2/include/qwt_null_paintdevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpaintengine.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpainter.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtextoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpen.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_div.h \
+		/usr/local/qwt-6.1.2/include/qwt_interval.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_layout.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_dict.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_map.h \
+		/usr/local/qwt-6.1.2/include/qwt_transform.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_canvas.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_marker.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_curve.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_seriesitem.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_samples.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_3d.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_polar.h \
+		/usr/local/qwt-6.1.2/include/qwt_math.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_store.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_directpainter.h \
+		/usr/local/qwt-6.1.2/include/qwt_curve_fitter.h \
+		/usr/local/qwt-6.1.2/include/qwt_painter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o area.o ../Trajectory/area.cpp
 
 trajectory.o: ../Trajectory/trajectory.cpp ../Trajectory/trajectory.h \
@@ -2345,7 +2509,45 @@ trajectory.o: ../Trajectory/trajectory.cpp ../Trajectory/trajectory.h \
 		../Trajectory/mainwindow.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QMainWindow \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qmainwindow.h \
-		../Trajectory/controlpanel.h
+		../Trajectory/controlpanel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QFileDialog \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qfiledialog.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
+		../Trajectory/graftrajectory.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_grid.h \
+		/usr/local/qwt-6.1.2/include/qwt_global.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_item.h \
+		/usr/local/qwt-6.1.2/include/qwt_text.h \
+		/usr/local/qwt-6.1.2/include/qwt_legend_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_graphic.h \
+		/usr/local/qwt-6.1.2/include/qwt_null_paintdevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpaintengine.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpainter.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtextoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpen.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_div.h \
+		/usr/local/qwt-6.1.2/include/qwt_interval.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_layout.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_dict.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_map.h \
+		/usr/local/qwt-6.1.2/include/qwt_transform.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_canvas.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_marker.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_curve.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_seriesitem.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_samples.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_3d.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_polar.h \
+		/usr/local/qwt-6.1.2/include/qwt_math.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_store.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_directpainter.h \
+		/usr/local/qwt-6.1.2/include/qwt_curve_fitter.h \
+		/usr/local/qwt-6.1.2/include/qwt_painter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o trajectory.o ../Trajectory/trajectory.cpp
 
 controlpanel.o: ../Trajectory/controlpanel.cpp ../Trajectory/controlpanel.h \
@@ -2461,6 +2663,11 @@ controlpanel.o: ../Trajectory/controlpanel.cpp ../Trajectory/controlpanel.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QLabel \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qlabel.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qframe.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QFileDialog \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qfiledialog.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
 		/opt/embedded-widgets-1.1.0/src/svgbutton/QtSvgButton \
 		/opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QAbstractButton \
@@ -2510,7 +2717,40 @@ controlpanel.o: ../Trajectory/controlpanel.cpp ../Trajectory/controlpanel.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QTimer \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimer.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasictimer.h \
-		../Trajectory/trajectory.h
+		../Trajectory/trajectory.h \
+		../Trajectory/graftrajectory.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_grid.h \
+		/usr/local/qwt-6.1.2/include/qwt_global.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_item.h \
+		/usr/local/qwt-6.1.2/include/qwt_text.h \
+		/usr/local/qwt-6.1.2/include/qwt_legend_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_graphic.h \
+		/usr/local/qwt-6.1.2/include/qwt_null_paintdevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpaintengine.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpainter.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtextoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpen.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_div.h \
+		/usr/local/qwt-6.1.2/include/qwt_interval.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_layout.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_dict.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_map.h \
+		/usr/local/qwt-6.1.2/include/qwt_transform.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_canvas.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_marker.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_curve.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_seriesitem.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_samples.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_3d.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_polar.h \
+		/usr/local/qwt-6.1.2/include/qwt_math.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_store.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_directpainter.h \
+		/usr/local/qwt-6.1.2/include/qwt_curve_fitter.h \
+		/usr/local/qwt-6.1.2/include/qwt_painter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controlpanel.o ../Trajectory/controlpanel.cpp
 
 graftrajectory.o: ../Trajectory/graftrajectory.cpp ../Trajectory/graftrajectory.h \
@@ -2616,7 +2856,76 @@ graftrajectory.o: ../Trajectory/graftrajectory.cpp ../Trajectory/graftrajectory.
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfiledevice.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qvector2d.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtouchdevice.h \
-		ui_graftrajectory.h
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QGridLayout \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qgridlayout.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qlayout.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qboxlayout.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_grid.h \
+		/usr/local/qwt-6.1.2/include/qwt_global.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_item.h \
+		/usr/local/qwt-6.1.2/include/qwt_text.h \
+		/usr/local/qwt-6.1.2/include/qwt_legend_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_graphic.h \
+		/usr/local/qwt-6.1.2/include/qwt_null_paintdevice.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpaintengine.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpainter.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qtextoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpen.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_div.h \
+		/usr/local/qwt-6.1.2/include/qwt_interval.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_layout.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_dict.h \
+		/usr/local/qwt-6.1.2/include/qwt_scale_map.h \
+		/usr/local/qwt-6.1.2/include/qwt_transform.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qframe.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_canvas.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_marker.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_curve.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_seriesitem.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_data.h \
+		/usr/local/qwt-6.1.2/include/qwt_samples.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_3d.h \
+		/usr/local/qwt-6.1.2/include/qwt_point_polar.h \
+		/usr/local/qwt-6.1.2/include/qwt_math.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
+		/usr/local/qwt-6.1.2/include/qwt_series_store.h \
+		/usr/local/qwt-6.1.2/include/qwt_plot_directpainter.h \
+		/usr/local/qwt-6.1.2/include/qwt_curve_fitter.h \
+		/usr/local/qwt-6.1.2/include/qwt_painter.h \
+		ui_graftrajectory.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QVariant \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QAction \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qaction.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qicon.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qactiongroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QApplication \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qapplication.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcoreapplication.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeventloop.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdesktopwidget.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qguiapplication.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qinputmethod.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QButtonGroup \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QHeaderView \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qheaderview.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qstyleoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qvalidator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qregularexpression.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qslider.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractslider.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qstyle.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qtabbar.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qtabwidget.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qrubberband.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graftrajectory.o ../Trajectory/graftrajectory.cpp
 
 qtsvgbutton.o: /opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.cpp /opt/Qt5.4.1/5.4/gcc/include/QtSvg/QSvgRenderer \
@@ -2735,9 +3044,6 @@ qtsvgbutton.o: /opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.cpp /opt/Qt
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/QPicture \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpicture.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qtsvgbutton.o /opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.cpp
-
-qrc_berylsquare_svgbutton.o: qrc_berylsquare_svgbutton.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_berylsquare_svgbutton.o qrc_berylsquare_svgbutton.cpp
 
 qrc_resourses.o: qrc_resourses.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resourses.o qrc_resourses.cpp

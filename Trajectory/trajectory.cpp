@@ -72,3 +72,11 @@ void Trajectory::Renumber(Area *ptr){
         list->at(i)->SetNumber(i+1);
     }
 }
+
+QList<QStringList>  Trajectory::getTrajectory(){
+    QList<QStringList> list;
+    for (int i = 0; i<this->list->count(); i++){
+        list.append(this->list->at(i)->getArea());
+    }
+    return list;
+}

@@ -188,7 +188,7 @@ void ControlPanel::pressButtonGraf(){
 }
 
 void ControlPanel::pressButtonSave(){
-    emit saveFileAs(QFileDialog::getSaveFileName(0,"Сохранить траекторию как...", "","*.xml"));
+    emit saveFileAs(QFileDialog::getSaveFileName(0,"Сохранить траекторию как...", "","*.xml")+".xml");
 }
 
 void ControlPanel::pressButtonLoad(){

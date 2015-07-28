@@ -39,8 +39,7 @@ CONFIG += qwt
 include ( /usr/local/qwt-6.1.2/features/qwt.prf )
 include(/opt/embedded-widgets-1.1.0/src/svgbutton/svgbutton.pri)
 
-RESOURCES += /opt/embedded-widgets-1.1.0/skins/berylsquare_svgbutton.qrc \
-    resourses.qrc
+RESOURCES += resourses.qrc
 
 QT *= svg
 

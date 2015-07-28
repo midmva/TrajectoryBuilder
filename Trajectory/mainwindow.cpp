@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    mode = false;
+    mode = true;
     nameSkin = new QStringList();
     nameSkin->append("Line");
     nameSkin->append("Aссel");
@@ -64,35 +64,35 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::changeTrajectory(int number){
-    if (!mode){
-        horLay->removeWidget(graf[show_trajectory]);
-        graf[show_trajectory]->hide();
-        show_trajectory = number-1;
-        horLay->insertWidget(0,graf[show_trajectory]);
-        graf[show_trajectory]->show();
-    }
-    else{
+    if (mode){
         horLay->removeWidget(trajectory[show_trajectory]);
         trajectory[show_trajectory]->hide();
         show_trajectory = number-1;
         horLay->insertWidget(0,trajectory[show_trajectory]);
         trajectory[show_trajectory]->show();
+    }
+    else{
+        horLay->removeWidget(graf[show_trajectory]);
+        graf[show_trajectory]->hide();
+        show_trajectory = number-1;
+        horLay->insertWidget(0,graf[show_trajectory]);
+        graf[show_trajectory]->show();
     }
 }
 
 void MainWindow::changeMode(bool mode){
     this->mode = mode;
-    if (!this->mode){
-        horLay->removeWidget(trajectory[show_trajectory]);
-        trajectory[show_trajectory]->hide();
-        horLay->insertWidget(0,graf[show_trajectory]);
-        graf[show_trajectory]->show();
-    }
-    else {
+    if (this->mode){
         horLay->removeWidget(graf[show_trajectory]);
         graf[show_trajectory]->hide();
         horLay->insertWidget(0,trajectory[show_trajectory]);
         trajectory[show_trajectory]->show();
+    }
+    else {        
+        horLay->removeWidget(trajectory[show_trajectory]);
+        trajectory[show_trajectory]->hide();
+        horLay->insertWidget(0,graf[show_trajectory]);
+        graf[show_trajectory]->show();
     }
 }
 
@@ -101,5 +101,10 @@ void MainWindow::loadFile(const QString name){
 }
 
 void MainWindow::saveFile(const QString name){
-    qDebug()<<"save "+name;
+    QList<QStringList> list;
+    for (int i = 0; i<4; i++){
+        list = trajectory[i]->getTrajectory();
+        if (!list.isEmpty())
+            qDebug()<<list;
+    }
 }

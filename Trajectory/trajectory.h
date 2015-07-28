@@ -20,6 +20,7 @@ class Trajectory : public QWidget
 public:
     explicit Trajectory(QWidget *parent = 0);
     ~Trajectory();
+    QList<QStringList> getTrajectory();
 
 private:
     Ui::Trajectory *ui;
