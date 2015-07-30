@@ -163,3 +163,8 @@ QStringList Area::getArea(){
     list.append(QString::number(parameterValue2->value()));
     return list;
 }
+
+void Area::setParameter(int parameter1, int parameter2){
+    parameterValue1->setValue(parameter1);
+    parameterValue2->setValue(parameter2);
+}

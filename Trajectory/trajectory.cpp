@@ -80,3 +80,19 @@ QList<QStringList>  Trajectory::getTrajectory(){
     }
     return list;
 }
+
+void Trajectory::setTrajectory(const QList<QStringList> list){
+    for (int i = 0; i<list.count();i++){
+        QString temp;
+        int index;
+        for (index = 0; index<nameArea->count();index++){//ищем нужный индекс участка траектории
+            temp = nameArea->at(index);
+            temp.replace("\n"," ");
+            if (temp.compare(list.at(i).at(1))){//ищем совпадение по имени участка траектории
+                break;
+            }
+        }
+        ChangeManeur(index+1);
+        this->list->last()->setParameter(list.at(i).at(2).toInt(),list.at(i).at(2).toInt());
+    }
+}

@@ -21,6 +21,7 @@ public:
     explicit Trajectory(QWidget *parent = 0);
     ~Trajectory();
     QList<QStringList> getTrajectory();
+    void setTrajectory(const QList<QStringList> list);
 
 private:
     Ui::Trajectory *ui;

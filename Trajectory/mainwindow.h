@@ -5,6 +5,9 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QStringList>
+#include <QtXml>
+#include <QFile>
+#include <QMessageBox>
 #include "QtSvgButton"
 #include "change.h"
 #include "area.h"

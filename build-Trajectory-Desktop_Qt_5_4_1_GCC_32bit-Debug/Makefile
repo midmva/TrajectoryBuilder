@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQWT_DLL -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQWT_DLL -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIE $(DEFINES)
 CXXFLAGS      = -pipe -g -Wall -W -D_REENTRANT -fPIE $(DEFINES)
-INCPATH       = -I../Trajectory -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++
+INCPATH       = -I../Trajectory -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++
 QMAKE         = /opt/Qt5.4.1/5.4/gcc/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -36,7 +36,7 @@ DISTNAME      = Trajectory1.0.0
 DISTDIR = /home/midv/Projects/TrajectoryBuilder/Trajectory/.tmp/Trajectory1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/opt/Qt5.4.1/5.4/gcc -Wl,-rpath,/opt/Qt5.4.1/5.4/gcc/lib
-LIBS          = $(SUBLIBS) -L/usr/local/qwt-6.1.2/lib -lqwt -L/opt/Qt5.4.1/5.4/gcc/lib -lQt5Svg -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L/usr/local/qwt-6.1.2/lib -lqwt -L/opt/Qt5.4.1/5.4/gcc/lib -lQt5Svg -lQt5Widgets -lQt5Gui -lQt5Xml -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -358,7 +358,8 @@ Makefile: ../Trajectory/Trajectory.pro /opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++/qm
 		/opt/Qt5.4.1/5.4/gcc/lib/libQt5Svg.prl \
 		/opt/Qt5.4.1/5.4/gcc/lib/libQt5Widgets.prl \
 		/opt/Qt5.4.1/5.4/gcc/lib/libQt5Gui.prl \
-		/opt/Qt5.4.1/5.4/gcc/lib/libQt5Core.prl
+		/opt/Qt5.4.1/5.4/gcc/lib/libQt5Core.prl \
+		/opt/Qt5.4.1/5.4/gcc/lib/libQt5Xml.prl
 	$(QMAKE) -spec linux-g++ CONFIG+=debug -o Makefile ../Trajectory/Trajectory.pro
 /opt/Qt5.4.1/5.4/gcc/mkspecs/features/spec_pre.prf:
 /opt/Qt5.4.1/5.4/gcc/mkspecs/common/shell-unix.conf:
@@ -481,6 +482,7 @@ Makefile: ../Trajectory/Trajectory.pro /opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++/qm
 /opt/Qt5.4.1/5.4/gcc/lib/libQt5Widgets.prl:
 /opt/Qt5.4.1/5.4/gcc/lib/libQt5Gui.prl:
 /opt/Qt5.4.1/5.4/gcc/lib/libQt5Core.prl:
+/opt/Qt5.4.1/5.4/gcc/lib/libQt5Xml.prl:
 qmake: FORCE
 	@$(QMAKE) -spec linux-g++ CONFIG+=debug -o Makefile ../Trajectory/Trajectory.pro
 
@@ -641,6 +643,124 @@ moc_mainwindow.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QMainWindow \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qgridlayout.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QVBoxLayout \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QStringList \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/QtXml \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/QtXmlDepends \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QtCore \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QtCoreDepends \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qparallelanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpauseanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpropertyanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qvariantanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeasingcurve.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsequentialanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtextcodec.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qendian.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlibraryinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdatetime.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbuffer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdiriterator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileselector.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QObject \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfilesystemwatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlockfile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qloggingcategory.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qprocess.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qresource.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsavefile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsettings.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstandardpaths.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstorageinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtemporarydir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QScopedPointer \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtemporaryfile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qidentityproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsortfilterproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstringlistmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonarray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonvalue.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsondocument.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonobject.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstracteventdispatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeventloop.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractnativeeventfilter.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasictimer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcoreapplication.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmetaobject.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimedata.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobjectcleanuphandler.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsharedmemory.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsignalmapper.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsocketnotifier.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsystemsemaphore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtranslator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qwineventnotifier.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimedatabase.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimetype.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfactoryinterface.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlibrary.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qplugin.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpluginloader.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/quuid.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstracttransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeventtransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfinalstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qhistorystate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsignaltransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstatemachine.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qexception.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuture.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfutureinterface.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qrunnable.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qresultstore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuturesynchronizer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuturewatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qreadwritelock.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsemaphore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthread.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthreadpool.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthreadstorage.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qwaitcondition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qarraydataops.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qarraydatapointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbitarray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbytearraymatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcache.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcollator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcommandlineoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcommandlineparser.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcryptographichash.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qelapsedtimer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlinkedlist.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmessageauthenticationcode.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qqueue.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qregularexpression.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qscopedvaluerollback.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstack.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtextboundaryfinder.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimeline.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimezone.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qxmlstream.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtcoreversion.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qtxmlglobal.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qdom.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qxml.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qtxmlversion.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QFile \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QMessageBox \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qmessagebox.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
 		/opt/embedded-widgets-1.1.0/src/svgbutton/QtSvgButton \
 		/opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QAbstractButton \
@@ -658,17 +778,11 @@ moc_mainwindow.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QMainWindow \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qspinbox.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractspinbox.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qvalidator.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qregularexpression.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QTimer \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimer.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasictimer.h \
 		../Trajectory/trajectory.h \
 		../Trajectory/controlpanel.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QFileDialog \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qfiledialog.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
 		../Trajectory/graftrajectory.h \
 		/usr/local/qwt-6.1.2/include/qwt_plot_grid.h \
 		/usr/local/qwt-6.1.2/include/qwt_global.h \
@@ -697,13 +811,12 @@ moc_mainwindow.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QMainWindow \
 		/usr/local/qwt-6.1.2/include/qwt_point_3d.h \
 		/usr/local/qwt-6.1.2/include/qwt_point_polar.h \
 		/usr/local/qwt-6.1.2/include/qwt_math.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
 		/usr/local/qwt-6.1.2/include/qwt_series_store.h \
 		/usr/local/qwt-6.1.2/include/qwt_plot_directpainter.h \
 		/usr/local/qwt-6.1.2/include/qwt_curve_fitter.h \
 		/usr/local/qwt-6.1.2/include/qwt_painter.h \
 		../Trajectory/mainwindow.h
-	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/mainwindow.h -o moc_mainwindow.cpp
+	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/mainwindow.h -o moc_mainwindow.cpp
 
 moc_change.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QWidget \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qwidget.h \
@@ -811,7 +924,7 @@ moc_change.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QWidget \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qlabel.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qframe.h \
 		../Trajectory/change.h
-	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/change.h -o moc_change.cpp
+	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/change.h -o moc_change.cpp
 
 moc_area.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QWidget \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qwidget.h \
@@ -941,7 +1054,7 @@ moc_area.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QWidget \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasictimer.h \
 		../Trajectory/change.h \
 		../Trajectory/area.h
-	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/area.h -o moc_area.cpp
+	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/area.h -o moc_area.cpp
 
 moc_trajectory.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QWidget \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qwidget.h \
@@ -1074,7 +1187,7 @@ moc_trajectory.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QWidget \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimer.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasictimer.h \
 		../Trajectory/trajectory.h
-	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/trajectory.h -o moc_trajectory.cpp
+	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/trajectory.h -o moc_trajectory.cpp
 
 moc_controlpanel.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QWidget \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qwidget.h \
@@ -1201,7 +1314,7 @@ moc_controlpanel.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QWidget \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/QPicture \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpicture.h \
 		../Trajectory/controlpanel.h
-	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/controlpanel.h -o moc_controlpanel.cpp
+	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/controlpanel.h -o moc_controlpanel.cpp
 
 moc_graftrajectory.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QWidget \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qwidget.h \
@@ -1344,7 +1457,7 @@ moc_graftrajectory.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QWidget \
 		/usr/local/qwt-6.1.2/include/qwt_curve_fitter.h \
 		/usr/local/qwt-6.1.2/include/qwt_painter.h \
 		../Trajectory/graftrajectory.h
-	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/graftrajectory.h -o moc_graftrajectory.cpp
+	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. ../Trajectory/graftrajectory.h -o moc_graftrajectory.cpp
 
 moc_qtsvgbutton.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QAbstractButton \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractbutton.h \
@@ -1453,7 +1566,7 @@ moc_qtsvgbutton.cpp: /opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QAbstractButton \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/QPicture \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qpicture.h \
 		/opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.h
-	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. /opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.h -o moc_qtsvgbutton.cpp
+	/opt/Qt5.4.1/5.4/gcc/bin/moc $(DEFINES) -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. /opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.h -o moc_qtsvgbutton.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1718,6 +1831,124 @@ main.o: ../Trajectory/main.cpp ../Trajectory/mainwindow.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qgridlayout.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QVBoxLayout \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QStringList \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/QtXml \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/QtXmlDepends \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QtCore \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QtCoreDepends \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qparallelanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpauseanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpropertyanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qvariantanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeasingcurve.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsequentialanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtextcodec.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qendian.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlibraryinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdatetime.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbuffer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdiriterator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileselector.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QObject \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfilesystemwatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlockfile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qloggingcategory.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qprocess.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qresource.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsavefile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsettings.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstandardpaths.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstorageinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtemporarydir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QScopedPointer \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtemporaryfile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qidentityproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsortfilterproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstringlistmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonarray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonvalue.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsondocument.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonobject.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstracteventdispatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeventloop.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractnativeeventfilter.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasictimer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcoreapplication.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmetaobject.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimedata.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobjectcleanuphandler.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsharedmemory.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsignalmapper.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsocketnotifier.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsystemsemaphore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtranslator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qwineventnotifier.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimedatabase.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimetype.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfactoryinterface.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlibrary.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qplugin.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpluginloader.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/quuid.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstracttransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeventtransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfinalstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qhistorystate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsignaltransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstatemachine.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qexception.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuture.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfutureinterface.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qrunnable.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qresultstore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuturesynchronizer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuturewatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qreadwritelock.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsemaphore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthread.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthreadpool.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthreadstorage.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qwaitcondition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qarraydataops.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qarraydatapointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbitarray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbytearraymatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcache.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcollator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcommandlineoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcommandlineparser.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcryptographichash.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qelapsedtimer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlinkedlist.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmessageauthenticationcode.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qqueue.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qregularexpression.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qscopedvaluerollback.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstack.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtextboundaryfinder.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimeline.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimezone.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qxmlstream.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtcoreversion.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qtxmlglobal.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qdom.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qxml.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qtxmlversion.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QFile \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QMessageBox \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qmessagebox.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
 		/opt/embedded-widgets-1.1.0/src/svgbutton/QtSvgButton \
 		/opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QAbstractButton \
@@ -1735,17 +1966,11 @@ main.o: ../Trajectory/main.cpp ../Trajectory/mainwindow.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qspinbox.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractspinbox.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qvalidator.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qregularexpression.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QTimer \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimer.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasictimer.h \
 		../Trajectory/trajectory.h \
 		../Trajectory/controlpanel.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QFileDialog \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qfiledialog.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
 		../Trajectory/graftrajectory.h \
 		/usr/local/qwt-6.1.2/include/qwt_plot_grid.h \
 		/usr/local/qwt-6.1.2/include/qwt_global.h \
@@ -1774,15 +1999,12 @@ main.o: ../Trajectory/main.cpp ../Trajectory/mainwindow.h \
 		/usr/local/qwt-6.1.2/include/qwt_point_3d.h \
 		/usr/local/qwt-6.1.2/include/qwt_point_polar.h \
 		/usr/local/qwt-6.1.2/include/qwt_math.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
 		/usr/local/qwt-6.1.2/include/qwt_series_store.h \
 		/usr/local/qwt-6.1.2/include/qwt_plot_directpainter.h \
 		/usr/local/qwt-6.1.2/include/qwt_curve_fitter.h \
 		/usr/local/qwt-6.1.2/include/qwt_painter.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QApplication \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qapplication.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcoreapplication.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeventloop.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdesktopwidget.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qguiapplication.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qinputmethod.h
@@ -1901,6 +2123,124 @@ mainwindow.o: ../Trajectory/mainwindow.cpp ../Trajectory/mainwindow.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qgridlayout.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QVBoxLayout \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QStringList \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/QtXml \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/QtXmlDepends \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QtCore \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QtCoreDepends \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qparallelanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpauseanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpropertyanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qvariantanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeasingcurve.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsequentialanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtextcodec.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qendian.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlibraryinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdatetime.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbuffer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdiriterator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileselector.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QObject \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfilesystemwatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlockfile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qloggingcategory.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qprocess.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qresource.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsavefile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsettings.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstandardpaths.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstorageinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtemporarydir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QScopedPointer \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtemporaryfile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qidentityproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsortfilterproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstringlistmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonarray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonvalue.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsondocument.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonobject.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstracteventdispatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeventloop.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractnativeeventfilter.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasictimer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcoreapplication.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmetaobject.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimedata.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobjectcleanuphandler.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsharedmemory.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsignalmapper.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsocketnotifier.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsystemsemaphore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtranslator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qwineventnotifier.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimedatabase.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimetype.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfactoryinterface.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlibrary.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qplugin.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpluginloader.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/quuid.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstracttransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeventtransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfinalstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qhistorystate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsignaltransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstatemachine.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qexception.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuture.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfutureinterface.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qrunnable.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qresultstore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuturesynchronizer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuturewatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qreadwritelock.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsemaphore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthread.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthreadpool.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthreadstorage.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qwaitcondition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qarraydataops.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qarraydatapointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbitarray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbytearraymatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcache.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcollator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcommandlineoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcommandlineparser.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcryptographichash.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qelapsedtimer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlinkedlist.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmessageauthenticationcode.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qqueue.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qregularexpression.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qscopedvaluerollback.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstack.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtextboundaryfinder.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimeline.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimezone.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qxmlstream.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtcoreversion.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qtxmlglobal.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qdom.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qxml.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qtxmlversion.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QFile \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QMessageBox \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qmessagebox.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
 		/opt/embedded-widgets-1.1.0/src/svgbutton/QtSvgButton \
 		/opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QAbstractButton \
@@ -1918,17 +2258,11 @@ mainwindow.o: ../Trajectory/mainwindow.cpp ../Trajectory/mainwindow.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qspinbox.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractspinbox.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qvalidator.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qregularexpression.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QTimer \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimer.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasictimer.h \
 		../Trajectory/trajectory.h \
 		../Trajectory/controlpanel.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QFileDialog \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qfiledialog.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
 		../Trajectory/graftrajectory.h \
 		/usr/local/qwt-6.1.2/include/qwt_plot_grid.h \
 		/usr/local/qwt-6.1.2/include/qwt_global.h \
@@ -1957,7 +2291,6 @@ mainwindow.o: ../Trajectory/mainwindow.cpp ../Trajectory/mainwindow.h \
 		/usr/local/qwt-6.1.2/include/qwt_point_3d.h \
 		/usr/local/qwt-6.1.2/include/qwt_point_polar.h \
 		/usr/local/qwt-6.1.2/include/qwt_math.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
 		/usr/local/qwt-6.1.2/include/qwt_series_store.h \
 		/usr/local/qwt-6.1.2/include/qwt_plot_directpainter.h \
 		/usr/local/qwt-6.1.2/include/qwt_curve_fitter.h \
@@ -1969,8 +2302,6 @@ mainwindow.o: ../Trajectory/mainwindow.cpp ../Trajectory/mainwindow.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qactiongroup.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QApplication \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qapplication.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcoreapplication.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeventloop.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdesktopwidget.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qguiapplication.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtGui/qinputmethod.h \
@@ -1980,8 +2311,6 @@ mainwindow.o: ../Trajectory/mainwindow.cpp ../Trajectory/mainwindow.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qheaderview.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractitemview.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractscrollarea.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractitemmodel.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qitemselectionmodel.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qabstractitemdelegate.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qstyleoption.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qslider.h \
@@ -2305,13 +2634,121 @@ area.o: ../Trajectory/area.cpp ../Trajectory/area.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qmainwindow.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QVBoxLayout \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QStringList \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/QtXml \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/QtXmlDepends \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QtCore \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QtCoreDepends \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qparallelanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpauseanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpropertyanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qvariantanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeasingcurve.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsequentialanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtextcodec.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qendian.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlibraryinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdatetime.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbuffer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdiriterator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileselector.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QObject \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfilesystemwatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlockfile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qloggingcategory.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qprocess.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qresource.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsavefile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsettings.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstandardpaths.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstorageinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtemporarydir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QScopedPointer \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtemporaryfile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qidentityproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsortfilterproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstringlistmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonarray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonvalue.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsondocument.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonobject.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstracteventdispatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractnativeeventfilter.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmetaobject.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimedata.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobjectcleanuphandler.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsharedmemory.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsignalmapper.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsocketnotifier.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsystemsemaphore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtranslator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qwineventnotifier.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimedatabase.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimetype.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfactoryinterface.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlibrary.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qplugin.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpluginloader.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/quuid.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstracttransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeventtransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfinalstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qhistorystate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsignaltransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstatemachine.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qexception.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuture.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfutureinterface.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qrunnable.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qresultstore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuturesynchronizer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuturewatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qreadwritelock.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsemaphore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthread.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthreadpool.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthreadstorage.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qwaitcondition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qarraydataops.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qarraydatapointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbitarray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbytearraymatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcache.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcollator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcommandlineoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcommandlineparser.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcryptographichash.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qelapsedtimer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlinkedlist.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmessageauthenticationcode.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qqueue.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qscopedvaluerollback.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstack.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtextboundaryfinder.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimeline.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimezone.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qxmlstream.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtcoreversion.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qtxmlglobal.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qdom.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qxml.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qtxmlversion.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QFile \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QMessageBox \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qmessagebox.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
 		../Trajectory/trajectory.h \
 		../Trajectory/controlpanel.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QFileDialog \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qfiledialog.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
 		../Trajectory/graftrajectory.h \
 		/usr/local/qwt-6.1.2/include/qwt_plot_grid.h \
 		/usr/local/qwt-6.1.2/include/qwt_global.h \
@@ -2340,7 +2777,6 @@ area.o: ../Trajectory/area.cpp ../Trajectory/area.h \
 		/usr/local/qwt-6.1.2/include/qwt_point_3d.h \
 		/usr/local/qwt-6.1.2/include/qwt_point_polar.h \
 		/usr/local/qwt-6.1.2/include/qwt_math.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
 		/usr/local/qwt-6.1.2/include/qwt_series_store.h \
 		/usr/local/qwt-6.1.2/include/qwt_plot_directpainter.h \
 		/usr/local/qwt-6.1.2/include/qwt_curve_fitter.h \
@@ -2509,12 +2945,120 @@ trajectory.o: ../Trajectory/trajectory.cpp ../Trajectory/trajectory.h \
 		../Trajectory/mainwindow.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QMainWindow \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qmainwindow.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/QtXml \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/QtXmlDepends \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QtCore \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QtCoreDepends \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qparallelanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpauseanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpropertyanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qvariantanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeasingcurve.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsequentialanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtextcodec.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qendian.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlibraryinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdatetime.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbuffer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdiriterator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileselector.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QObject \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfilesystemwatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlockfile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qloggingcategory.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qprocess.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qresource.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsavefile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsettings.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstandardpaths.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstorageinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtemporarydir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QScopedPointer \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtemporaryfile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qidentityproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsortfilterproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstringlistmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonarray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonvalue.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsondocument.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonobject.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstracteventdispatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractnativeeventfilter.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmetaobject.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimedata.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobjectcleanuphandler.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsharedmemory.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsignalmapper.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsocketnotifier.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsystemsemaphore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtranslator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qwineventnotifier.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimedatabase.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimetype.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfactoryinterface.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlibrary.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qplugin.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpluginloader.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/quuid.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstracttransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeventtransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfinalstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qhistorystate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsignaltransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstatemachine.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qexception.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuture.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfutureinterface.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qrunnable.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qresultstore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuturesynchronizer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuturewatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qreadwritelock.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsemaphore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthread.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthreadpool.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthreadstorage.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qwaitcondition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qarraydataops.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qarraydatapointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbitarray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbytearraymatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcache.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcollator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcommandlineoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcommandlineparser.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcryptographichash.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qelapsedtimer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlinkedlist.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmessageauthenticationcode.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qqueue.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qscopedvaluerollback.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstack.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtextboundaryfinder.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimeline.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimezone.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qxmlstream.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtcoreversion.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qtxmlglobal.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qdom.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qxml.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qtxmlversion.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QFile \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QMessageBox \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qmessagebox.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
 		../Trajectory/controlpanel.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QFileDialog \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qfiledialog.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdir.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileinfo.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qdialog.h \
 		../Trajectory/graftrajectory.h \
 		/usr/local/qwt-6.1.2/include/qwt_plot_grid.h \
 		/usr/local/qwt-6.1.2/include/qwt_global.h \
@@ -2543,7 +3087,6 @@ trajectory.o: ../Trajectory/trajectory.cpp ../Trajectory/trajectory.h \
 		/usr/local/qwt-6.1.2/include/qwt_point_3d.h \
 		/usr/local/qwt-6.1.2/include/qwt_point_polar.h \
 		/usr/local/qwt-6.1.2/include/qwt_math.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
 		/usr/local/qwt-6.1.2/include/qwt_series_store.h \
 		/usr/local/qwt-6.1.2/include/qwt_plot_directpainter.h \
 		/usr/local/qwt-6.1.2/include/qwt_curve_fitter.h \
@@ -2709,14 +3252,122 @@ controlpanel.o: ../Trajectory/controlpanel.cpp ../Trajectory/controlpanel.h \
 		../Trajectory/mainwindow.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QMainWindow \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qmainwindow.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/QtXml \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/QtXmlDepends \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QtCore \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QtCoreDepends \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qparallelanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpauseanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpropertyanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qvariantanimation.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeasingcurve.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsequentialanimationgroup.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtextcodec.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qendian.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlibraryinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdatetime.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbuffer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qdiriterator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfileselector.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QObject \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfilesystemwatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlockfile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qloggingcategory.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qprocess.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qresource.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsavefile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsettings.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstandardpaths.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstorageinfo.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtemporarydir.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QScopedPointer \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtemporaryfile.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qidentityproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsortfilterproxymodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstringlistmodel.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonarray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonvalue.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsondocument.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qjsonobject.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstracteventdispatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractnativeeventfilter.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasictimer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmetaobject.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimedata.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qobjectcleanuphandler.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsharedmemory.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsignalmapper.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsocketnotifier.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsystemsemaphore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtranslator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qwineventnotifier.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimedatabase.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmimetype.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfactoryinterface.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlibrary.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qplugin.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qpluginloader.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/quuid.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstractstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qabstracttransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qeventtransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfinalstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qhistorystate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsignaltransition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstate.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstatemachine.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qexception.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuture.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfutureinterface.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qrunnable.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qresultstore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuturesynchronizer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qfuturewatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qreadwritelock.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qsemaphore.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthread.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthreadpool.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qthreadstorage.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qwaitcondition.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qarraydataops.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qarraydatapointer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbitarray.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbytearraymatcher.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcache.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcollator.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcommandlineoption.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcommandlineparser.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qcryptographichash.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qelapsedtimer.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qlinkedlist.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmessageauthenticationcode.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qqueue.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qscopedvaluerollback.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qstack.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtextboundaryfinder.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimeline.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimezone.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qxmlstream.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtcoreversion.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qtxmlglobal.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qdom.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qxml.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtXml/qtxmlversion.h \
+		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QFile \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QMessageBox \
+		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qmessagebox.h \
 		../Trajectory/change.h \
 		../Trajectory/area.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QGridLayout \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/QSpinBox \
 		/opt/Qt5.4.1/5.4/gcc/include/QtWidgets/qspinbox.h \
 		/opt/Qt5.4.1/5.4/gcc/include/QtCore/QTimer \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qtimer.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qbasictimer.h \
 		../Trajectory/trajectory.h \
 		../Trajectory/graftrajectory.h \
 		/usr/local/qwt-6.1.2/include/qwt_plot_grid.h \
@@ -2746,7 +3397,6 @@ controlpanel.o: ../Trajectory/controlpanel.cpp ../Trajectory/controlpanel.h \
 		/usr/local/qwt-6.1.2/include/qwt_point_3d.h \
 		/usr/local/qwt-6.1.2/include/qwt_point_polar.h \
 		/usr/local/qwt-6.1.2/include/qwt_math.h \
-		/opt/Qt5.4.1/5.4/gcc/include/QtCore/qmath.h \
 		/usr/local/qwt-6.1.2/include/qwt_series_store.h \
 		/usr/local/qwt-6.1.2/include/qwt_plot_directpainter.h \
 		/usr/local/qwt-6.1.2/include/qwt_curve_fitter.h \

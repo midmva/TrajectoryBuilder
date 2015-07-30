@@ -102,9 +102,57 @@ void MainWindow::loadFile(const QString name){
 
 void MainWindow::saveFile(const QString name){
     QList<QStringList> list;
+    QDomDocument doc("file");
+    QDomElement element = doc.createElement("file");
+    QDomAttr attr1 = doc.createAttribute("create_date");
+    attr1.setValue(QDate::currentDate().toString("dd.MM.yyyy"));
+    element.setAttributeNode(attr1);
+    QDomAttr attr2 = doc.createAttribute("create_time");
+    attr2.setValue(QTime::currentTime().toString("hh:mm:ss"));
+    element.setAttributeNode(attr2);
+    doc.appendChild(element);
     for (int i = 0; i<4; i++){
         list = trajectory[i]->getTrajectory();
-        if (!list.isEmpty())
-            qDebug()<<list;
+        if (!list.isEmpty()){
+            QDomElement trajectory_element = doc.createElement("traectory");
+            QDomAttr trajectory_attr = doc.createAttribute("number");
+            trajectory_attr.setValue(QString::number(i+1));
+            trajectory_element.setAttributeNode(trajectory_attr);
+            for (int j = 0; j<list.count();j++){
+                QDomElement area_element = doc.createElement("area");
+                QDomAttr area_attr0 = doc.createAttribute("number");
+                area_attr0.setValue(list.at(j).at(0));//номер
+                area_element.setAttributeNode(area_attr0);
+                QDomAttr area_attr1 = doc.createAttribute("name");
+                area_attr1.setValue(list.at(j).at(1));//имя
+                area_element.setAttributeNode(area_attr1);
+                QDomAttr area_attr2 = doc.createAttribute("parameter_1_name");//имя 1 параметра
+                area_attr2.setValue(list.at(j).at(2));//значение параметра
+                area_element.setAttributeNode(area_attr2);
+                QDomAttr area_attr3 = doc.createAttribute("parameter_1_value");//значение 2 параметра
+                area_attr3.setValue(list.at(j).at(3));//значение параметра
+                area_element.setAttributeNode(area_attr3);
+                QDomAttr area_attr4 = doc.createAttribute("parameter_2_name");//имя 2 параметра
+                area_attr4.setValue(list.at(j).at(4));//значение параметра
+                area_element.setAttributeNode(area_attr4);
+                QDomAttr area_attr5 = doc.createAttribute("parameter_2_value");//значение 2 параметра
+                area_attr5.setValue(list.at(j).at(5));//значение параметра
+                area_element.setAttributeNode(area_attr5);
+                trajectory_element.appendChild(area_element);
+            }
+            element.appendChild(trajectory_element);
+        }
+    }
+    if (!element.hasChildNodes()){
+        QMessageBox *error = new QMessageBox(QMessageBox::Critical,
+                                             "Error","Не найдено на одной траектории",
+                                             QMessageBox::Ok);
+        error->show();
+        return;
+    }
+    QFile file(name);
+    if (file.open(QIODevice::WriteOnly)){
+        QTextStream(&file)<<doc.toString();
+        file.close();
     }
 }
