@@ -82,17 +82,29 @@ QList<QStringList>  Trajectory::getTrajectory(){
 }
 
 void Trajectory::setTrajectory(const QList<QStringList> list){
+    trajLayer->removeWidget(addButton);
+    addButton->hide();
     for (int i = 0; i<list.count();i++){
         QString temp;
         int index;
         for (index = 0; index<nameArea->count();index++){//ищем нужный индекс участка траектории
             temp = nameArea->at(index);
             temp.replace("\n"," ");
-            if (temp.compare(list.at(i).at(1))){//ищем совпадение по имени участка траектории
+            if (temp == list.at(i).at(1)){//ищем совпадение по имени участка траектории
                 break;
             }
         }
-        ChangeManeur(index+1);
-        this->list->last()->setParameter(list.at(i).at(2).toInt(),list.at(i).at(2).toInt());
+        Area *area = new Area();
+        this->list->append(area);
+        connect(area,SIGNAL(Renumber(Area*)),this,SLOT(Renumber(Area*)));
+        area->InitArea(list.at(i).at(0).toInt(),nameSkin->at(index),nameArea->at(index),nameParameter->at(index*2),0,nameParameter->at(index*2+1),0);
+
+        trajLayer->addWidget(area);
+
+        this->list->last()->setParameter(list.at(i).at(2).toInt(),list.at(i).at(3).toInt());
+    }
+    if (this->list->count()<4){
+        trajLayer->addWidget(addButton);
+        addButton->show();
     }
 }

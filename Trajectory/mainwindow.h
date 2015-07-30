@@ -34,6 +34,8 @@ private:
     GrafTrajectory *graf[4];
     int show_trajectory;
     bool mode;
+    void parceXml(QDomNode node);
+
 
 private slots:
     void changeTrajectory(const int number);

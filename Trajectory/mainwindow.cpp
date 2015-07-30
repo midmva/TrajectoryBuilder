@@ -97,7 +97,68 @@ void MainWindow::changeMode(bool mode){
 }
 
 void MainWindow::loadFile(const QString name){
-    qDebug()<<"load "+name;
+    QFile file(name);
+    QDomDocument doc("file");
+    QStringList string_list[4];
+    QList<QStringList> list;
+    if (file.open(QIODevice::ReadOnly)){
+        if (doc.setContent(&file)){
+            QString file_name = name;
+            file_name.remove(0,file_name.lastIndexOf("/")+1);
+            setWindowTitle(windowTitle()+" "+file_name);
+            if (doc.documentElement().nodeName()!="file")return;
+            QDomNode node = doc.documentElement().firstChild();
+            while (!node.isNull()){                  //пока все не разберем
+                if (node.isElement()){               //проверка на вшивость
+                    QDomElement element = node.toElement();
+                    if (element.nodeName()!="traectory")return;
+                    QDomNode node_child = node.firstChild();
+                    list.clear();
+                    while (!node_child.isNull()){
+                        if (node_child.isElement()){
+                            QDomElement element_child = node_child.toElement();
+                            if (element_child.nodeName()!="area")return;
+                            int index = element_child.attribute("number").toInt()-1;
+                            string_list[index].clear();
+                            string_list[index].append(element_child.attribute("number"));
+                            string_list[index].append(element_child.attribute("name"));
+                            string_list[index].append(element_child.attribute("parameter_1_value"));
+                            string_list[index].append(element_child.attribute("parameter_2_value"));
+                            list.append(string_list[index]);
+                        }
+                        node_child = node_child.nextSibling();
+                    }
+                    if (!list.isEmpty())
+                        trajectory[element.attribute("number").toInt()-1]->setTrajectory(list);
+                }
+                node = node.nextSibling();
+            }
+        }
+        else {
+            QMessageBox *error = new QMessageBox(QMessageBox::Critical,
+                                                 "Error","Cannot to read this file",
+                                                 QMessageBox::Ok);
+            error->show();
+        }
+        file.close();
+    }
+    else{
+        QMessageBox *error = new QMessageBox(QMessageBox::Critical,
+                                             "Error","Cannot to open this file",
+                                             QMessageBox::Ok);
+        error->show();
+    }
+}
+
+void MainWindow::parceXml(QDomNode node){
+    while (!node.isNull()){                  //пока все не разберем
+        if (node.isElement()){               //проверка на вшивость
+            QDomElement element = node.toElement();
+            qDebug()<<element.nodeName();
+
+        }
+        node = node.nextSibling();
+    }
 }
 
 void MainWindow::saveFile(const QString name){

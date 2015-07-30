@@ -30,7 +30,6 @@ public:
                   const QString parameter2, const int value2);
     void SetNumber(int number);
     QStringList getArea();
-    void setArea(const QStringList list);
     void setParameter(int parameter1, int parameter2);
 
 private:
