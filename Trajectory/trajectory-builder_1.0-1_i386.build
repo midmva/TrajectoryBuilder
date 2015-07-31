@@ -1,0 +1,396 @@
+ dpkg-buildpackage -rfakeroot -D -us -uc
+dpkg-buildpackage: пакет исходных текстов trajectory-builder
+dpkg-buildpackage: версия исходных текстов 1.0-1
+dpkg-buildpackage: source distribution unstable
+dpkg-buildpackage: исходные тексты изменены midv <midv@tut.by>
+ dpkg-source --before-build trajectory-builder-1.0
+dpkg-buildpackage: архитектура узла i386
+ fakeroot debian/rules clean
+dh_testdir
+dh_testroot
+rm -f build-stamp
+# Add here commands to clean up after the build process.
+#/usr/bin/make clean
+#/usr/bin/make distclean
+dh_clean
+ dpkg-source -b trajectory-builder-1.0
+dpkg-source: инфо: используется формат исходника «3.0 (quilt)»
+dpkg-source: инфо: сборка trajectory-builder с использованием существующего ./trajectory-builder_1.0.orig.tar.gz
+dpkg-source: предупреждение: игнорируется удаление файла rules
+dpkg-source: инфо: сборка trajectory-builder в trajectory-builder_1.0-1.debian.tar.gz
+dpkg-source: инфо: сборка trajectory-builder в trajectory-builder_1.0-1.dsc
+ debian/rules build
+dh_testdir
+# Add here commands to compile the package.
+#qmake-qt4 -config release
+/opt/Qt5.4.1/5.4/gcc/bin/qmake -config release
+make
+make[1]: Вход в каталог `/home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0'
+/opt/Qt5.4.1/5.4/gcc/bin/uic mainwindow.ui -o ui_mainwindow.h
+/opt/Qt5.4.1/5.4/gcc/bin/uic change.ui -o ui_change.h
+/opt/Qt5.4.1/5.4/gcc/bin/uic area.ui -o ui_area.h
+/opt/Qt5.4.1/5.4/gcc/bin/uic trajectory.ui -o ui_trajectory.h
+/opt/Qt5.4.1/5.4/gcc/bin/uic controlpanel.ui -o ui_controlpanel.h
+/opt/Qt5.4.1/5.4/gcc/bin/uic graftrajectory.ui -o ui_graftrajectory.h
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o main.o main.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o mainwindow.o mainwindow.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o change.o change.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o area.o area.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o trajectory.o trajectory.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o controlpanel.o controlpanel.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o graftrajectory.o graftrajectory.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o qtsvgbutton.o /opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.cpp
+/opt/Qt5.4.1/5.4/gcc/bin/rcc -name resourses resourses.qrc -o qrc_resourses.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o qrc_resourses.o qrc_resourses.cpp
+/opt/Qt5.4.1/5.4/gcc/bin/moc -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0 -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore mainwindow.h -o moc_mainwindow.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o moc_mainwindow.o moc_mainwindow.cpp
+/opt/Qt5.4.1/5.4/gcc/bin/moc -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0 -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore change.h -o moc_change.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o moc_change.o moc_change.cpp
+/opt/Qt5.4.1/5.4/gcc/bin/moc -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0 -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore area.h -o moc_area.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o moc_area.o moc_area.cpp
+/opt/Qt5.4.1/5.4/gcc/bin/moc -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0 -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore trajectory.h -o moc_trajectory.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o moc_trajectory.o moc_trajectory.cpp
+/opt/Qt5.4.1/5.4/gcc/bin/moc -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0 -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore controlpanel.h -o moc_controlpanel.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o moc_controlpanel.o moc_controlpanel.cpp
+/opt/Qt5.4.1/5.4/gcc/bin/moc -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0 -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore graftrajectory.h -o moc_graftrajectory.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o moc_graftrajectory.o moc_graftrajectory.cpp
+/opt/Qt5.4.1/5.4/gcc/bin/moc -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -I/home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0 -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore /opt/embedded-widgets-1.1.0/src/svgbutton/qtsvgbutton.h -o moc_qtsvgbutton.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIE -DQWT_DLL -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -I. -I/usr/local/qwt-6.1.2/include -I/opt/embedded-widgets-1.1.0/src/svgbutton -I/opt/Qt5.4.1/5.4/gcc/include -I/opt/Qt5.4.1/5.4/gcc/include/QtSvg -I/opt/Qt5.4.1/5.4/gcc/include/QtWidgets -I/opt/Qt5.4.1/5.4/gcc/include/QtGui -I/opt/Qt5.4.1/5.4/gcc/include/QtXml -I/opt/Qt5.4.1/5.4/gcc/include/QtCore -I. -I. -I/opt/Qt5.4.1/5.4/gcc/mkspecs/linux-g++ -o moc_qtsvgbutton.o moc_qtsvgbutton.cpp
+g++ -Wl,-O1 -Wl,-rpath,/opt/Qt5.4.1/5.4/gcc -Wl,-rpath,/opt/Qt5.4.1/5.4/gcc/lib -o Trajectory main.o mainwindow.o change.o area.o trajectory.o controlpanel.o graftrajectory.o qtsvgbutton.o qrc_resourses.o moc_mainwindow.o moc_change.o moc_area.o moc_trajectory.o moc_controlpanel.o moc_graftrajectory.o moc_qtsvgbutton.o   -L/usr/local/qwt-6.1.2/lib -Wl,-rpath=\$ORIGIN/../lib -lqwt -L/opt/Qt5.4.1/5.4/gcc/lib -lQt5Svg -lQt5Widgets -lQt5Gui -lQt5Xml -lQt5Core -lGL -lpthread 
+make[1]: Выход из каталога `/home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0'
+touch build-stamp
+ fakeroot debian/rules binary
+dh_testdir
+dh_testroot
+dh_prep
+dh_installdirs
+# Add here commands to install the package into debian/<packagename>
+make INSTALL_ROOT=`pwd`/debian/trajectory-builder install
+make[1]: Вход в каталог `/home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0'
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/Trajectory /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/bin/
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libicudata.so.53 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libicudata.so.53
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libicudata.so.53.1 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libicudata.so.53.1
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libicui18n.so.53 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libicui18n.so.53
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libicui18n.so.53.1 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libicui18n.so.53.1
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libicuio.so.53 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libicuio.so.53
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libicuio.so.53.1 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libicuio.so.53.1
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libicuuc.so.53 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libicuuc.so.53
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libicuuc.so.53.1 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libicuuc.so.53.1
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Core.so /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Core.so
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Core.so.5 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Core.so.5
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Core.so.5.4 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Core.so.5.4
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Core.so.5.4.1 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Core.so.5.4.1
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5DBus.so /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5DBus.so
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5DBus.so.5 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5DBus.so.5
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5DBus.so.5.4 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5DBus.so.5.4
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5DBus.so.5.4.1 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5DBus.so.5.4.1
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Gui.so /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Gui.so
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Gui.so.5 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Gui.so.5
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Gui.so.5.4 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Gui.so.5.4
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Gui.so.5.4.1 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Gui.so.5.4.1
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Svg.so /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Svg.so
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Svg.so.5 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Svg.so.5
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Svg.so.5.4 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Svg.so.5.4
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Svg.so.5.4.1 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Svg.so.5.4.1
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Widgets.so /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Widgets.so
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Widgets.so.5 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Widgets.so.5
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Widgets.so.5.4 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Widgets.so.5.4
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Widgets.so.5.4.1 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Widgets.so.5.4.1
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Xml.so /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Xml.so
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Xml.so.5 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Xml.so.5
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Xml.so.5.4 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Xml.so.5.4
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libQt5Xml.so.5.4.1 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libQt5Xml.so.5.4.1
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libqwt.so /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libqwt.so
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libqwt.so.6 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libqwt.so.6
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libqwt.so.6.1 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libqwt.so.6.1
+install -m 755 -p /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/libqwt.so.6.1.2 /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+strip /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/libqwt.so.6.1.2
+cp -f -R /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/lib/plugins /home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0/debian/trajectory-builder/opt/midv-firmware/lib/
+make[1]: Выход из каталога `/home/midv/Projects/TrajectoryBuilder/Trajectory/trajectory-builder-1.0'
+mkdir -p `pwd`/debian/trajectory-builder/usr/bin/
+ln -sf /opt/midv-firmware/bin/Trajectory `pwd`/debian/trajectory-builder/usr/bin/Trajectory
+# Build architecture-independent files here.
+# We have nothing to do by default.
+dh_testdir
+dh_testroot
+dh_installchangelogs
+dh_installdocs
+dh_installexamples
+dh_installman
+dh_link
+dh_strip
+dh_compress
+dh_fixperms
+dh_installdeb
+dh_gencontrol
+dpkg-gencontrol: предупреждение: Depends поле из пакета trajectory-builder: неизвестная подстановочная переменная ${shlibs:Depends}
+dh_md5sums
+dh_builddeb
+dpkg-deb: сборка пакета «trajectory-builder» в файл «../trajectory-builder_1.0-1_i386.deb».
+ dpkg-genchanges  >../trajectory-builder_1.0-1_i386.changes
+dpkg-genchanges: в закачку включён весь исходный код
+ dpkg-source --after-build trajectory-builder-1.0
+dpkg-buildpackage: закачка всего (с пакетом оригинального исходного кода)
+Now running lintian...
+E: trajectory-builder changes: bad-distribution-in-changes-file unstable
+E: trajectory-builder source: source-is-missing lib/libQt5Core.so.5.4.1
+E: trajectory-builder source: source-is-missing lib/libQt5DBus.so.5.4.1
+E: trajectory-builder source: source-is-missing lib/libQt5Gui.so.5.4.1
+E: trajectory-builder source: source-is-missing lib/libQt5Svg.so.5.4.1
+E: trajectory-builder source: source-is-missing lib/libQt5Widgets.so.5.4.1
+E: trajectory-builder source: source-is-missing lib/libQt5Xml.so.5.4.1
+E: trajectory-builder source: source-is-missing lib/libicudata.so.53.1
+E: trajectory-builder source: source-is-missing lib/libicui18n.so.53.1
+E: trajectory-builder source: source-is-missing lib/libicuio.so.53.1
+E: trajectory-builder source: source-is-missing lib/libicuuc.so.53.1
+E: trajectory-builder source: source-is-missing lib/libqwt.so.6.1.2
+E: trajectory-builder source: source-is-missing lib/plugins/audio/libqtaudio_alsa.so
+E: trajectory-builder source: source-is-missing lib/plugins/audio/libqtmedia_pulse.so
+E: trajectory-builder source: source-is-missing lib/plugins/bearer/libqconnmanbearer.so
+E: trajectory-builder source: source-is-missing lib/plugins/bearer/libqgenericbearer.so
+E: trajectory-builder source: source-is-missing lib/plugins/bearer/libqnmbearer.so
+E: trajectory-builder source: source-is-missing lib/plugins/designer/libqdeclarativeview.so
+E: trajectory-builder source: source-is-missing lib/plugins/designer/libqquickwidget.so
+E: trajectory-builder source: source-is-missing lib/plugins/designer/libqwebview.so
+E: trajectory-builder source: source-is-missing lib/plugins/generic/libqevdevkeyboardplugin.so
+E: trajectory-builder source: source-is-missing lib/plugins/generic/libqevdevmouseplugin.so
+E: trajectory-builder source: source-is-missing lib/plugins/generic/libqevdevtabletplugin.so
+E: trajectory-builder source: source-is-missing lib/plugins/generic/libqevdevtouchplugin.so
+E: trajectory-builder source: source-is-missing lib/plugins/geoservices/libqtgeoservices_nokia.so
+E: trajectory-builder source: source-is-missing lib/plugins/geoservices/libqtgeoservices_osm.so
+E: trajectory-builder source: source-is-missing lib/plugins/iconengines/libqsvgicon.so
+E: trajectory-builder source: source-is-missing lib/plugins/imageformats/libqdds.so
+E: trajectory-builder source: source-is-missing lib/plugins/imageformats/libqgif.so
+E: trajectory-builder source: source-is-missing lib/plugins/imageformats/libqicns.so
+E: trajectory-builder source: source-is-missing lib/plugins/imageformats/libqico.so
+E: trajectory-builder source: source-is-missing lib/plugins/imageformats/libqjp2.so
+E: trajectory-builder source: source-is-missing lib/plugins/imageformats/libqjpeg.so
+E: trajectory-builder source: source-is-missing lib/plugins/imageformats/libqmng.so
+E: trajectory-builder source: source-is-missing lib/plugins/imageformats/libqsvg.so
+E: trajectory-builder source: source-is-missing lib/plugins/imageformats/libqtga.so
+E: trajectory-builder source: source-is-missing lib/plugins/imageformats/libqtiff.so
+E: trajectory-builder source: source-is-missing lib/plugins/imageformats/libqwbmp.so
+E: trajectory-builder source: source-is-missing lib/plugins/imageformats/libqwebp.so
+E: trajectory-builder source: source-is-missing lib/plugins/mediaservice/libgstaudiodecoder.so
+E: trajectory-builder source: source-is-missing lib/plugins/mediaservice/libgstcamerabin.so
+E: trajectory-builder source: source-is-missing lib/plugins/mediaservice/libgstmediacapture.so
+E: trajectory-builder source: source-is-missing lib/plugins/mediaservice/libgstmediaplayer.so
+E: trajectory-builder source: source-is-missing lib/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so
+E: trajectory-builder source: source-is-missing lib/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so
+E: trajectory-builder source: source-is-missing lib/plugins/platforms/libqeglfs.so
+E: trajectory-builder source: source-is-missing lib/plugins/platforms/libqlinuxfb.so
+E: trajectory-builder source: source-is-missing lib/plugins/platforms/libqminimal.so
+E: trajectory-builder source: source-is-missing lib/plugins/platforms/libqminimalegl.so
+E: trajectory-builder source: source-is-missing lib/plugins/platforms/libqoffscreen.so
+E: trajectory-builder source: source-is-missing lib/plugins/platforms/libqxcb.so
+E: trajectory-builder source: source-is-missing lib/plugins/platformthemes/libqgtk2.so
+E: trajectory-builder source: source-is-missing lib/plugins/playlistformats/libqtmultimedia_m3u.so
+E: trajectory-builder source: source-is-missing lib/plugins/position/libqtposition_geoclue.so
+E: trajectory-builder source: source-is-missing lib/plugins/position/libqtposition_positionpoll.so
+E: trajectory-builder source: source-is-missing lib/plugins/printsupport/libcupsprintersupport.so
+E: trajectory-builder source: source-is-missing lib/plugins/qml1tooling/libqmldbg_inspector.so
+E: trajectory-builder source: source-is-missing lib/plugins/qml1tooling/libqmldbg_tcp_qtdeclarative.so
+E: trajectory-builder source: source-is-missing lib/plugins/qmltooling/libqmldbg_qtquick2.so
+E: trajectory-builder source: source-is-missing lib/plugins/qmltooling/libqmldbg_tcp.so
+E: trajectory-builder source: source-is-missing lib/plugins/sensorgestures/libqtsensorgestures_plugin.so
+E: trajectory-builder source: source-is-missing lib/plugins/sensorgestures/libqtsensorgestures_shakeplugin.so
+E: trajectory-builder source: source-is-missing lib/plugins/sensors/libqtsensors_generic.so
+E: trajectory-builder source: source-is-missing lib/plugins/sensors/libqtsensors_linuxsys.so
+E: trajectory-builder source: source-is-missing lib/plugins/sqldrivers/libqsqlite.so
+E: trajectory-builder source: source-is-missing lib/plugins/sqldrivers/libqsqlmysql.so
+E: trajectory-builder source: source-is-missing lib/plugins/sqldrivers/libqsqlpsql.so
+W: trajectory-builder source: package-needs-versioned-debhelper-build-depends 9
+W: trajectory-builder source: superfluous-clutter-in-homepage <insert the upstream URL, if relevant>
+W: trajectory-builder source: bad-homepage <insert the upstream URL, if relevant>
+W: trajectory-builder source: debian-rules-missing-recommended-target build-indep
+W: trajectory-builder source: debian-rules-missing-recommended-target build-arch
+W: trajectory-builder source: out-of-date-standards-version 3.9.4 (current is 3.9.5)
+E: trajectory-builder: binary-or-shlib-defines-rpath opt/midv-firmware/bin/Trajectory /opt/Qt5.4.1/5.4/gcc/lib
+E: trajectory-builder: binary-or-shlib-defines-rpath opt/midv-firmware/bin/Trajectory /opt/Qt5.4.1/5.4/gcc
+E: trajectory-builder: embedded-library opt/midv-firmware/lib/libQt5Core.so: zlib
+E: trajectory-builder: embedded-library opt/midv-firmware/lib/libQt5Core.so.5: zlib
+E: trajectory-builder: embedded-library opt/midv-firmware/lib/libQt5Core.so.5.4: zlib
+E: trajectory-builder: embedded-library opt/midv-firmware/lib/libQt5Core.so.5.4.1: zlib
+E: trajectory-builder: embedded-library opt/midv-firmware/lib/libQt5Gui.so: libpng
+E: trajectory-builder: embedded-library opt/midv-firmware/lib/libQt5Gui.so.5: libpng
+E: trajectory-builder: embedded-library opt/midv-firmware/lib/libQt5Gui.so.5.4: libpng
+E: trajectory-builder: embedded-library opt/midv-firmware/lib/libQt5Gui.so.5.4.1: libpng
+W: trajectory-builder: shared-lib-without-dependency-information opt/midv-firmware/lib/libicudata.so.53
+W: trajectory-builder: shared-lib-without-dependency-information opt/midv-firmware/lib/libicudata.so.53.1
+E: trajectory-builder: binary-or-shlib-defines-rpath opt/midv-firmware/lib/libqwt.so /opt/Qt5.4.1/5.4/gcc
+E: trajectory-builder: binary-or-shlib-defines-rpath opt/midv-firmware/lib/libqwt.so /opt/Qt5.4.1/5.4/gcc/lib
+E: trajectory-builder: binary-or-shlib-defines-rpath opt/midv-firmware/lib/libqwt.so.6 /opt/Qt5.4.1/5.4/gcc
+E: trajectory-builder: binary-or-shlib-defines-rpath opt/midv-firmware/lib/libqwt.so.6 /opt/Qt5.4.1/5.4/gcc/lib
+E: trajectory-builder: binary-or-shlib-defines-rpath opt/midv-firmware/lib/libqwt.so.6.1 /opt/Qt5.4.1/5.4/gcc
+E: trajectory-builder: binary-or-shlib-defines-rpath opt/midv-firmware/lib/libqwt.so.6.1 /opt/Qt5.4.1/5.4/gcc/lib
+E: trajectory-builder: binary-or-shlib-defines-rpath opt/midv-firmware/lib/libqwt.so.6.1.2 /opt/Qt5.4.1/5.4/gcc
+E: trajectory-builder: binary-or-shlib-defines-rpath opt/midv-firmware/lib/libqwt.so.6.1.2 /opt/Qt5.4.1/5.4/gcc/lib
+E: trajectory-builder: embedded-library opt/midv-firmware/lib/plugins/imageformats/libqjp2.so: libjpeg
+E: trajectory-builder: embedded-library opt/midv-firmware/lib/plugins/imageformats/libqjpeg.so: libjpeg
+E: trajectory-builder: embedded-library opt/midv-firmware/lib/plugins/imageformats/libqmng.so: libmng
+E: trajectory-builder: embedded-library opt/midv-firmware/lib/plugins/imageformats/libqtiff.so: tiff
+E: trajectory-builder: embedded-library opt/midv-firmware/lib/plugins/sqldrivers/libqsqlite.so: sqlite
+W: trajectory-builder: missing-depends-line
+W: trajectory-builder: wrong-bug-number-in-closes l3:#nnnn
+W: trajectory-builder: new-package-should-close-itp-bug
+E: trajectory-builder: changelog-is-dh_make-template
+E: trajectory-builder: helper-templates-in-copyright
+W: trajectory-builder: copyright-has-url-from-dh_make-boilerplate
+E: trajectory-builder: copyright-contains-dh_make-todo-boilerplate
+W: trajectory-builder: readme-debian-contains-debmake-template
+E: trajectory-builder: description-is-dh_make-template
+E: trajectory-builder: section-is-dh_make-template
+W: trajectory-builder: superfluous-clutter-in-homepage <insert the upstream URL, if relevant>
+W: trajectory-builder: bad-homepage <insert the upstream URL, if relevant>
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/bin/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/bin/Trajectory
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Core.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Core.so.5
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Core.so.5.4
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Core.so.5.4.1
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5DBus.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5DBus.so.5
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5DBus.so.5.4
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5DBus.so.5.4.1
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Gui.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Gui.so.5
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Gui.so.5.4
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Gui.so.5.4.1
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Svg.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Svg.so.5
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Svg.so.5.4
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Svg.so.5.4.1
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Widgets.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Widgets.so.5
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Widgets.so.5.4
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Widgets.so.5.4.1
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Xml.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Xml.so.5
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Xml.so.5.4
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libQt5Xml.so.5.4.1
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libicudata.so.53
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libicudata.so.53.1
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libicui18n.so.53
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libicui18n.so.53.1
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libicuio.so.53
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libicuio.so.53.1
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libicuuc.so.53
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libicuuc.so.53.1
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libqwt.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libqwt.so.6
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libqwt.so.6.1
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/libqwt.so.6.1.2
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/audio/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/audio/libqtaudio_alsa.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/audio/libqtmedia_pulse.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/bearer/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/bearer/libqconnmanbearer.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/bearer/libqgenericbearer.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/bearer/libqnmbearer.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/designer/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/designer/libqdeclarativeview.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/designer/libqquickwidget.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/designer/libqwebview.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/generic/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/generic/libqevdevkeyboardplugin.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/generic/libqevdevmouseplugin.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/generic/libqevdevtabletplugin.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/generic/libqevdevtouchplugin.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/geoservices/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/geoservices/libqtgeoservices_nokia.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/geoservices/libqtgeoservices_osm.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/iconengines/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/iconengines/libqsvgicon.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/imageformats/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/imageformats/libqdds.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/imageformats/libqgif.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/imageformats/libqicns.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/imageformats/libqico.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/imageformats/libqjp2.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/imageformats/libqjpeg.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/imageformats/libqmng.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/imageformats/libqsvg.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/imageformats/libqtga.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/imageformats/libqtiff.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/imageformats/libqwbmp.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/imageformats/libqwebp.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/mediaservice/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/mediaservice/libgstaudiodecoder.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/mediaservice/libgstcamerabin.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/mediaservice/libgstmediacapture.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/mediaservice/libgstmediaplayer.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/platforminputcontexts/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/platforms/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/platforms/libqeglfs.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/platforms/libqlinuxfb.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/platforms/libqminimal.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/platforms/libqminimalegl.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/platforms/libqoffscreen.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/platforms/libqxcb.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/platformthemes/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/platformthemes/libqgtk2.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/playlistformats/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/playlistformats/libqtmultimedia_m3u.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/position/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/position/libqtposition_geoclue.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/position/libqtposition_positionpoll.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/printsupport/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/printsupport/libcupsprintersupport.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/qml1tooling/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/qml1tooling/libqmldbg_inspector.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/qml1tooling/libqmldbg_tcp_qtdeclarative.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/qmltooling/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/qmltooling/libqmldbg_qtquick2.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/qmltooling/libqmldbg_tcp.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/sensorgestures/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/sensorgestures/libqtsensorgestures_plugin.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/sensorgestures/libqtsensorgestures_shakeplugin.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/sensors/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/sensors/libqtsensors_generic.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/sensors/libqtsensors_linuxsys.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/sqldrivers/
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/sqldrivers/libqsqlite.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/sqldrivers/libqsqlmysql.so
+E: trajectory-builder: dir-or-file-in-opt opt/midv-firmware/lib/plugins/sqldrivers/libqsqlpsql.so
+W: trajectory-builder: binary-without-manpage usr/bin/Trajectory
+Finished running lintian.

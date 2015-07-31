@@ -1,0 +1,5 @@
+trajectory-builder (1.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- midv <midv@tut.by>  Thu, 30 Jul 2015 16:43:14 +0300

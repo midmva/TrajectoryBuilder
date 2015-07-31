@@ -1,0 +1,10 @@
+Package: trajectory-builder
+Version: 1.0-1
+Architecture: i386
+Maintainer: midv <midv@tut.by>
+Installed-Size: 139712
+Section: unknown
+Priority: optional
+Homepage: <insert the upstream URL, if relevant>
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>

@@ -36,7 +36,7 @@ DISTNAME      = Trajectory1.0.0
 DISTDIR = /home/midv/Projects/TrajectoryBuilder/Trajectory/.tmp/Trajectory1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/opt/Qt5.4.1/5.4/gcc -Wl,-rpath,/opt/Qt5.4.1/5.4/gcc/lib
-LIBS          = $(SUBLIBS) -L/usr/local/qwt-6.1.2/lib -lqwt -L/opt/Qt5.4.1/5.4/gcc/lib -lQt5Svg -lQt5Widgets -lQt5Gui -lQt5Xml -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L/usr/local/qwt-6.1.2/lib -Wl,-rpath=\$$ORIGIN/../lib -lqwt -L/opt/Qt5.4.1/5.4/gcc/lib -lQt5Svg -lQt5Widgets -lQt5Gui -lQt5Xml -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -3721,9 +3721,103 @@ moc_qtsvgbutton.o: moc_qtsvgbutton.cpp
 
 ####### Install
 
-install:   FORCE
+install_target: first FORCE
+	@test -d $(INSTALL_ROOT)/opt/midv-firmware/bin || mkdir -p $(INSTALL_ROOT)/opt/midv-firmware/bin
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/build-Trajectory-Desktop_Qt_5_4_1_GCC_32bit-Debug/Trajectory $(INSTALL_ROOT)/opt/midv-firmware/bin/
 
-uninstall:   FORCE
+uninstall_target: FORCE
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/bin/Trajectory
+	-$(DEL_DIR) $(INSTALL_ROOT)/opt/midv-firmware/bin/ 
+
+
+install_data: first FORCE
+	@test -d $(INSTALL_ROOT)/opt/midv-firmware/lib || mkdir -p $(INSTALL_ROOT)/opt/midv-firmware/lib
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libchai.so $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libchai.so.2.10.6 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libicudata.so.53 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libicudata.so.53.1 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libicui18n.so.53 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libicui18n.so.53.1 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libicuio.so.53 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libicuio.so.53.1 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libicuuc.so.53 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libicuuc.so.53.1 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Core.so $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Core.so.5 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Core.so.5.4 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Core.so.5.4.1 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5DBus.so $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5DBus.so.5 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5DBus.so.5.4 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5DBus.so.5.4.1 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Gui.so $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Gui.so.5 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Gui.so.5.4 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Gui.so.5.4.1 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Network.so $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Network.so.5 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Network.so.5.4 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Network.so.5.4.1 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Svg.so $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Svg.so.5 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Svg.so.5.4 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Svg.so.5.4.1 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Widgets.so $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Widgets.so.5 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Widgets.so.5.4 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Widgets.so.5.4.1 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Xml.so $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Xml.so.5 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Xml.so.5.4 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_PROGRAM) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/libQt5Xml.so.5.4.1 $(INSTALL_ROOT)/opt/midv-firmware/lib/
+	-$(INSTALL_DIR) /home/midv/Projects/TrajectoryBuilder/Trajectory/lib/plugins $(INSTALL_ROOT)/opt/midv-firmware/lib/
+
+uninstall_data: FORCE
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/plugins
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Xml.so.5.4.1
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Xml.so.5.4
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Xml.so.5
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Xml.so
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Widgets.so.5.4.1
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Widgets.so.5.4
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Widgets.so.5
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Widgets.so
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Svg.so.5.4.1
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Svg.so.5.4
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Svg.so.5
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Svg.so
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Network.so.5.4.1
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Network.so.5.4
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Network.so.5
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Network.so
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Gui.so.5.4.1
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Gui.so.5.4
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Gui.so.5
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Gui.so
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5DBus.so.5.4.1
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5DBus.so.5.4
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5DBus.so.5
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5DBus.so
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Core.so.5.4.1
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Core.so.5.4
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Core.so.5
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libQt5Core.so
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libicuuc.so.53.1
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libicuuc.so.53
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libicuio.so.53.1
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libicuio.so.53
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libicui18n.so.53.1
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libicui18n.so.53
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libicudata.so.53.1
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libicudata.so.53
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libchai.so.2.10.6
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/midv-firmware/lib/libchai.so
+	-$(DEL_DIR) $(INSTALL_ROOT)/opt/midv-firmware/lib/ 
+
+
+install:  install_target install_data  FORCE
+
+uninstall: uninstall_target uninstall_data   FORCE
 
 FORCE:
 

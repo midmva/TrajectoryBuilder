@@ -1,0 +1,21 @@
+<!DOCTYPE file>
+<file create_date="30.07.2015" create_time="11:40:43">
+ <traectory number="1">
+  <area parameter_1_name="Расстояние, [м]" number="1" parameter_2_value="1" name="Прямолинейное равномерное движение" parameter_2_name="Ограничение по длительности маневра, [с]" parameter_1_value="0"/>
+ </traectory>
+ <traectory number="2">
+  <area parameter_1_name="Расстояние, [м]" number="1" parameter_2_value="3" name="Прямолинейное равномерное движение" parameter_2_name="Ограничение по длительности маневра, [с]" parameter_1_value="2"/>
+  <area parameter_1_name="Ускорение, [м/с^2]" number="2" parameter_2_value="5" name="Прямолинейное равноускоренное движение" parameter_2_name="Скорость в конце маневра, [м/с]" parameter_1_value="4"/>
+ </traectory>
+ <traectory number="3">
+  <area parameter_1_name="Расстояние, [м]" number="1" parameter_2_value="7" name="Прямолинейное равномерное движение" parameter_2_name="Ограничение по длительности маневра, [с]" parameter_1_value="6"/>
+  <area parameter_1_name="Ускорение, [м/с^2]" number="2" parameter_2_value="9" name="Прямолинейное равноускоренное движение" parameter_2_name="Скорость в конце маневра, [м/с]" parameter_1_value="8"/>
+  <area parameter_1_name="Центробежное ускорение, [м/с^2]" number="3" parameter_2_value="11" name="Движение по дуге в вертикальной плоскости" parameter_2_name="Угол поворота, [град]" parameter_1_value="10"/>
+ </traectory>
+ <traectory number="4">
+  <area parameter_1_name="Центробежное ускорение, [м/с^2]" number="1" parameter_2_value="13" name="Движение по дуге в вертикальной плоскости" parameter_2_name="Угол поворота, [град]" parameter_1_value="12"/>
+  <area parameter_1_name="Центробежное ускорение, [м/с^2]" number="2" parameter_2_value="15" name="Движение по дуге в горизонтальной плоскости" parameter_2_name="Угол поворота, [град]" parameter_1_value="14"/>
+  <area parameter_1_name="Максимальная перегрузка, [м/с^2]" number="3" parameter_2_value="17" name="Маневр &quot;змейка&quot; в вертикальной плоскости" parameter_2_name="Смещение цели в вертикальной плоскости, [м]" parameter_1_value="16"/>
+  <area parameter_1_name="Максимальная перегрузка, [м/с^2]" number="4" parameter_2_value="19" name="Маневр &quot;змейка&quot; в горизонтальной плоскости" parameter_2_name="Смещение цели в горизонтальной плоскости, [м]" parameter_1_value="18"/>
+ </traectory>
+</file>

@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Thu, 30 Jul 2015 16:43:14 +0300
+Source: trajectory-builder
+Binary: trajectory-builder
+Architecture: source i386
+Version: 1.0-1
+Distribution: unstable
+Urgency: low
+Maintainer: midv <midv@tut.by>
+Changed-By: midv <midv@tut.by>
+Description: 
+ trajectory-builder - <insert up to 60 chars description>
+Changes: 
+ trajectory-builder (1.0-1) unstable; urgency=low
+ .
+   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+Checksums-Sha1: 
+ 166f76349a75d6bca1589d759d20769bed71ecbc 896 trajectory-builder_1.0-1.dsc
+ 8fb71eca008e2df047b236ddd2efcc5ea94618e2 26863394 trajectory-builder_1.0.orig.tar.gz
+ 73bb3a105928e9dc9de7be1c4953fb81047e6797 2337 trajectory-builder_1.0-1.debian.tar.gz
+ a1e26e80be8e2d70ad349371746c2fa9ee829073 34698166 trajectory-builder_1.0-1_i386.deb
+Checksums-Sha256: 
+ 41a9267ac7cbcf00b4a6e42bbdb413d96192d93aa84c69427727e13b15ac7388 896 trajectory-builder_1.0-1.dsc
+ 127655a46b77a37a72dd2cca9732a2635f9b5d40bc882ea917daa9e24a7bed4c 26863394 trajectory-builder_1.0.orig.tar.gz
+ 6f104cd6b4ed22b3815e2eb54899a7a4c0665681c202ab0ed3d2f96ba87265d4 2337 trajectory-builder_1.0-1.debian.tar.gz
+ 42ebffa1b6dea26d17f2a23b7c4ff333cd7ac5aa16861cb268c56de72603b9a4 34698166 trajectory-builder_1.0-1_i386.deb
+Files: 
+ 127b72f7842f84aabe5ee9a6eca93d72 896 unknown optional trajectory-builder_1.0-1.dsc
+ e4af888a7ced75001cd6952df8b8b057 26863394 unknown optional trajectory-builder_1.0.orig.tar.gz
+ 8ede246af506c486804237d337d8dd85 2337 unknown optional trajectory-builder_1.0-1.debian.tar.gz
+ f580bdd55043aad2e43152de62503e38 34698166 unknown optional trajectory-builder_1.0-1_i386.deb
